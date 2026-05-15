@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glm-subbuild\CMakeFiles\d0be925399035a446510c7cee85127f1\glm-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glm-subbuild\CMakeFiles\d0be925399035a446510c7cee85127f1\glm-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glm-subbuild\CMakeFiles\d0be925399035a446510c7cee85127f1\glm-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glm-subbuild\CMakeFiles\d0be925399035a446510c7cee85127f1\glm-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glm-subbuild\CMakeFiles\d0be925399035a446510c7cee85127f1\glm-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glm-subbuild\CMakeFiles\d0be925399035a446510c7cee85127f1\glm-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glm-subbuild\CMakeFiles\d0be925399035a446510c7cee85127f1\glm-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glm-subbuild\CMakeFiles\d0be925399035a446510c7cee85127f1\glm-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glm-subbuild\CMakeFiles\d4da30104fee7a5e7336f845395e8a5f\glm-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glm-subbuild\CMakeFiles\c1120d09bd0383eabc502842e412755d\glm-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glm-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glm-subbuild\CMakeFiles\glm-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{6FBC0A42-1A55-3A2C-B940-69119D4B5393}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

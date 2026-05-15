@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glad-subbuild\CMakeFiles\7a94c5deba69cc160ceaa7028712fb94\glad-populate-mkdir.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glad-subbuild\CMakeFiles\7a94c5deba69cc160ceaa7028712fb94\glad-populate-download.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glad-subbuild\CMakeFiles\7a94c5deba69cc160ceaa7028712fb94\glad-populate-update.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glad-subbuild\CMakeFiles\7a94c5deba69cc160ceaa7028712fb94\glad-populate-patch.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glad-subbuild\CMakeFiles\7a94c5deba69cc160ceaa7028712fb94\glad-populate-configure.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glad-subbuild\CMakeFiles\7a94c5deba69cc160ceaa7028712fb94\glad-populate-build.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glad-subbuild\CMakeFiles\7a94c5deba69cc160ceaa7028712fb94\glad-populate-install.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glad-subbuild\CMakeFiles\7a94c5deba69cc160ceaa7028712fb94\glad-populate-test.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glad-subbuild\CMakeFiles\4fd68438b38463b4abf86e869805a7d9\glad-populate-complete.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glad-subbuild\CMakeFiles\931bddcebf7c75a834bbba67b4431411\glad-populate.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glad-subbuild\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glad-subbuild\CMakeFiles\glad-populate" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{40ABE980-64B6-3A90-9778-F0C4E41527EE}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

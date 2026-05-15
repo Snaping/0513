@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/CMakeFiles/glfw-populate"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/CMakeFiles/c95718ec1b1be613cee6c20d7911b281/glfw-populate.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/CMakeFiles/9ce49200f4ba97391385c3622781a4e4/glfw-populate-complete.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/CMakeFiles/1f457143a9e9426f87df51a313d107fe/glfw-populate-build.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/CMakeFiles/1f457143a9e9426f87df51a313d107fe/glfw-populate-configure.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/CMakeFiles/1f457143a9e9426f87df51a313d107fe/glfw-populate-download.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/CMakeFiles/1f457143a9e9426f87df51a313d107fe/glfw-populate-install.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/CMakeFiles/1f457143a9e9426f87df51a313d107fe/glfw-populate-mkdir.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/CMakeFiles/1f457143a9e9426f87df51a313d107fe/glfw-populate-patch.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/CMakeFiles/1f457143a9e9426f87df51a313d107fe/glfw-populate-test.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/CMakeFiles/1f457143a9e9426f87df51a313d107fe/glfw-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"glfw-populate"
+		],
+		"name" : "glfw-populate"
+	}
+}

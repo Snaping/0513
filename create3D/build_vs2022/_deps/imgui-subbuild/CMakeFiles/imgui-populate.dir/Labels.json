@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/imgui-subbuild/CMakeFiles/imgui-populate"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/imgui-subbuild/CMakeFiles/64d68626c6fbfa142d643a709f270e1c/imgui-populate.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/imgui-subbuild/CMakeFiles/4dc702c6807285997901eeeddb838151/imgui-populate-complete.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/imgui-subbuild/CMakeFiles/2f39a727a643d21ef6bec626db03b8b5/imgui-populate-build.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/imgui-subbuild/CMakeFiles/2f39a727a643d21ef6bec626db03b8b5/imgui-populate-configure.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/imgui-subbuild/CMakeFiles/2f39a727a643d21ef6bec626db03b8b5/imgui-populate-download.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/imgui-subbuild/CMakeFiles/2f39a727a643d21ef6bec626db03b8b5/imgui-populate-install.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/imgui-subbuild/CMakeFiles/2f39a727a643d21ef6bec626db03b8b5/imgui-populate-mkdir.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/imgui-subbuild/CMakeFiles/2f39a727a643d21ef6bec626db03b8b5/imgui-populate-patch.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/imgui-subbuild/CMakeFiles/2f39a727a643d21ef6bec626db03b8b5/imgui-populate-test.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/imgui-subbuild/CMakeFiles/2f39a727a643d21ef6bec626db03b8b5/imgui-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"imgui-populate"
+		],
+		"name" : "imgui-populate"
+	}
+}

@@ -1,0 +1,39 @@
+<Window x:Class="XProxyClient.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="XProxyClient" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
+            <Button Name="AddServerButton" Content="添加服务器" Width="100" Margin="0,0,10,0" Click="AddServerButton_Click"/>
+            <Button Name="EditServerButton" Content="编辑服务器" Width="100" Margin="0,0,10,0" Click="EditServerButton_Click"/>
+            <Button Name="DeleteServerButton" Content="删除服务器" Width="100" Margin="0,0,10,0" Click="DeleteServerButton_Click"/>
+            <Button Name="SubscriptionButton" Content="订阅管理" Width="100" Margin="0,0,10,0" Click="SubscriptionButton_Click"/>
+            <Button Name="SettingsButton" Content="设置" Width="100" Click="SettingsButton_Click"/>
+        </StackPanel>
+
+        <ListBox Name="ServerListBox" Grid.Row="1" Margin="0,0,0,10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Address}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Name="ConnectionStatusText" Text="未连接" VerticalAlignment="Center" Margin="0,0,10,0"/>
+            <Button Name="ConnectButton" Content="连接" Width="80" Margin="0,0,10,0" Click="ConnectButton_Click"/>
+            <Button Name="DisconnectButton" Content="断开" Width="80" Margin="0,0,10,0" Click="DisconnectButton_Click" IsEnabled="False"/>
+            <Button Name="TestLatencyButton" Content="测试延迟" Width="80" Click="TestLatencyButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

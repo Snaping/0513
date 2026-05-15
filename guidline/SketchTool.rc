@@ -1,0 +1,29 @@
+#include "resource.h"
+#include "windows.h"
+
+IDR_MENU MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "E&xit",                    IDM_FILE_EXIT
+    END
+    POPUP "&Draw"
+    BEGIN
+        MENUITEM "&Line",                    IDM_DRAW_LINE
+        MENUITEM "&Circle",                  IDM_DRAW_CIRCLE
+        MENUITEM "&Rectangle",               IDM_DRAW_RECTANGLE
+        MENUITEM "&Triangle",                IDM_DRAW_TRIANGLE
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Navigation Mode",         IDM_VIEW_NAVIGATION, CHECKED
+        MENUITEM SEPARATOR
+        MENUITEM "Zoom &In",                IDM_VIEW_ZOOMIN
+        MENUITEM "Zoom &Out",               IDM_VIEW_ZOOMOUT
+        MENUITEM "&Reset View",             IDM_VIEW_RESET
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Clear All",              IDM_EDIT_CLEAR
+    END
+END

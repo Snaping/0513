@@ -1,0 +1,59 @@
+<Window x:Class="XProxyClient.Views.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="设置" Height="500" Width="500"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="核心类型:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <ComboBox Name="CoreTypeComboBox" Grid.Row="0" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Socks端口:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox Name="SocksPortTextBox" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="HTTP端口:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox Name="HttpPortTextBox" Grid.Row="2" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="系统代理模式:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <ComboBox Name="SystemProxyModeComboBox" Grid.Row="3" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="自动连接:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <CheckBox Name="AutoConnectCheckBox" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="允许不安全:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <CheckBox Name="AllowInsecureCheckBox" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="日志级别:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox Name="LogLevelTextBox" Grid.Row="6" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="Xray路径:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox Name="XrayPathTextBox" Grid.Row="7" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="8" Grid.Column="0" Text="SingBox路径:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox Name="SingBoxPathTextBox" Grid.Row="8" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Name="SaveButton" Content="保存" Width="80" Margin="0,0,10,0" Click="SaveButton_Click"/>
+            <Button Name="ResetButton" Content="重置" Width="80" Margin="0,0,10,0" Click="ResetButton_Click"/>
+            <Button Name="CancelButton" Content="取消" Width="80" Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,150 @@
+^D:\WORKSPACE\AGENT\MULTISOLOSPACE\0513\CREATE3D\BUILD_VS2022\_DEPS\GLFW-SUBBUILD\CMAKEFILES\1F457143A9E9426F87DF51A313D107FE\GLFW-POPULATE-MKDIR.RULE
+setlocal
+D:\setup\CMake\bin\cmake.exe -Dcfgdir=/Debug -P D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/glfw-populate-prefix/tmp/glfw-populate-mkdirs.cmake
+if %errorlevel% neq 0 goto :cmEnd
+D:\setup\CMake\bin\cmake.exe -E touch D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/Debug/glfw-populate-mkdir
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\WORKSPACE\AGENT\MULTISOLOSPACE\0513\CREATE3D\BUILD_VS2022\_DEPS\GLFW-SUBBUILD\CMAKEFILES\1F457143A9E9426F87DF51A313D107FE\GLFW-POPULATE-DOWNLOAD.RULE
+setlocal
+cd D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\setup\CMake\bin\cmake.exe -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/glfw-populate-prefix/tmp/glfw-populate-gitclone.cmake
+if %errorlevel% neq 0 goto :cmEnd
+D:\setup\CMake\bin\cmake.exe -E touch D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/Debug/glfw-populate-download
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\WORKSPACE\AGENT\MULTISOLOSPACE\0513\CREATE3D\BUILD_VS2022\_DEPS\GLFW-SUBBUILD\CMAKEFILES\1F457143A9E9426F87DF51A313D107FE\GLFW-POPULATE-UPDATE.RULE
+setlocal
+cd D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glfw-src
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\setup\CMake\bin\cmake.exe -Dcan_fetch=YES -DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE -P D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/glfw-populate-prefix/tmp/glfw-populate-gitupdate.cmake
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\WORKSPACE\AGENT\MULTISOLOSPACE\0513\CREATE3D\BUILD_VS2022\_DEPS\GLFW-SUBBUILD\CMAKEFILES\1F457143A9E9426F87DF51A313D107FE\GLFW-POPULATE-PATCH.RULE
+setlocal
+D:\setup\CMake\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+D:\setup\CMake\bin\cmake.exe -E touch D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/Debug/glfw-populate-patch
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\WORKSPACE\AGENT\MULTISOLOSPACE\0513\CREATE3D\BUILD_VS2022\_DEPS\GLFW-SUBBUILD\CMAKEFILES\1F457143A9E9426F87DF51A313D107FE\GLFW-POPULATE-CONFIGURE.RULE
+setlocal
+cd D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glfw-build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\setup\CMake\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+D:\setup\CMake\bin\cmake.exe -E touch D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/Debug/glfw-populate-configure
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\WORKSPACE\AGENT\MULTISOLOSPACE\0513\CREATE3D\BUILD_VS2022\_DEPS\GLFW-SUBBUILD\CMAKEFILES\1F457143A9E9426F87DF51A313D107FE\GLFW-POPULATE-BUILD.RULE
+setlocal
+cd D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glfw-build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\setup\CMake\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+D:\setup\CMake\bin\cmake.exe -E touch D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/Debug/glfw-populate-build
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\WORKSPACE\AGENT\MULTISOLOSPACE\0513\CREATE3D\BUILD_VS2022\_DEPS\GLFW-SUBBUILD\CMAKEFILES\1F457143A9E9426F87DF51A313D107FE\GLFW-POPULATE-INSTALL.RULE
+setlocal
+cd D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glfw-build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\setup\CMake\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+D:\setup\CMake\bin\cmake.exe -E touch D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/Debug/glfw-populate-install
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\WORKSPACE\AGENT\MULTISOLOSPACE\0513\CREATE3D\BUILD_VS2022\_DEPS\GLFW-SUBBUILD\CMAKEFILES\1F457143A9E9426F87DF51A313D107FE\GLFW-POPULATE-TEST.RULE
+setlocal
+cd D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\glfw-build
+if %errorlevel% neq 0 goto :cmEnd
+D:
+if %errorlevel% neq 0 goto :cmEnd
+D:\setup\CMake\bin\cmake.exe -E echo_append
+if %errorlevel% neq 0 goto :cmEnd
+D:\setup\CMake\bin\cmake.exe -E touch D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/Debug/glfw-populate-test
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\WORKSPACE\AGENT\MULTISOLOSPACE\0513\CREATE3D\BUILD_VS2022\_DEPS\GLFW-SUBBUILD\CMAKEFILES\9CE49200F4BA97391385C3622781A4E4\GLFW-POPULATE-COMPLETE.RULE
+setlocal
+D:\setup\CMake\bin\cmake.exe -E make_directory D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/CMakeFiles/Debug
+if %errorlevel% neq 0 goto :cmEnd
+D:\setup\CMake\bin\cmake.exe -E touch D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/CMakeFiles/Debug/glfw-populate-complete
+if %errorlevel% neq 0 goto :cmEnd
+D:\setup\CMake\bin\cmake.exe -E touch D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/Debug/glfw-populate-done
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\WORKSPACE\AGENT\MULTISOLOSPACE\0513\CREATE3D\BUILD_VS2022\_DEPS\GLFW-SUBBUILD\CMAKEFILES\C95718EC1B1BE613CEE6C20D7911B281\GLFW-POPULATE.RULE
+setlocal
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^D:\WORKSPACE\AGENT\MULTISOLOSPACE\0513\CREATE3D\BUILD_VS2022\_DEPS\GLFW-SUBBUILD\CMAKELISTS.TXT
+setlocal
+D:\setup\CMake\bin\cmake.exe -SD:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild -BD:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild --check-stamp-file D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-subbuild/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

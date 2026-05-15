@@ -1,0 +1,64 @@
+<Window x:Class="XProxyClient.Views.ServerEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="服务器编辑" Height="500" Width="600"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="名称:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox Name="NameTextBox" Grid.Row="0" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="协议类型:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <ComboBox Name="ProxyTypeComboBox" Grid.Row="1" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="服务器地址:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox Name="AddressTextBox" Grid.Row="2" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="端口:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox Name="PortTextBox" Grid.Row="3" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="UUID:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox Name="UuidTextBox" Grid.Row="4" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="密码:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox Name="PasswordTextBox" Grid.Row="5" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="加密方式:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox Name="EncryptionTextBox" Grid.Row="6" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="传输协议:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox Name="NetworkTextBox" Grid.Row="7" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="8" Grid.Column="0" Text="TLS:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <TextBox Name="TlsTextBox" Grid.Row="8" Grid.Column="1" Margin="0,0,0,10"/>
+
+        <TextBlock Grid.Row="9" Grid.Column="0" Text="分享链接:" VerticalAlignment="Center" Margin="0,0,10,10"/>
+        <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBox Name="LinkTextBox" Width="300" Margin="0,0,10,0"/>
+            <Button Name="ParseLinkButton" Content="解析" Width="60" Click="ParseLinkButton_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="10" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Name="SaveButton" Content="保存" Width="80" Margin="0,0,10,0" Click="SaveButton_Click"/>
+            <Button Name="CancelButton" Content="取消" Width="80" Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

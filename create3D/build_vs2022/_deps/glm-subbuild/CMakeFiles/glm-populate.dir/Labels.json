@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glm-subbuild/CMakeFiles/glm-populate"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glm-subbuild/CMakeFiles/c1120d09bd0383eabc502842e412755d/glm-populate.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glm-subbuild/CMakeFiles/d4da30104fee7a5e7336f845395e8a5f/glm-populate-complete.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glm-subbuild/CMakeFiles/d0be925399035a446510c7cee85127f1/glm-populate-build.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glm-subbuild/CMakeFiles/d0be925399035a446510c7cee85127f1/glm-populate-configure.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glm-subbuild/CMakeFiles/d0be925399035a446510c7cee85127f1/glm-populate-download.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glm-subbuild/CMakeFiles/d0be925399035a446510c7cee85127f1/glm-populate-install.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glm-subbuild/CMakeFiles/d0be925399035a446510c7cee85127f1/glm-populate-mkdir.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glm-subbuild/CMakeFiles/d0be925399035a446510c7cee85127f1/glm-populate-patch.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glm-subbuild/CMakeFiles/d0be925399035a446510c7cee85127f1/glm-populate-test.rule"
+		},
+		{
+			"file" : "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glm-subbuild/CMakeFiles/d0be925399035a446510c7cee85127f1/glm-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"glm-populate"
+		],
+		"name" : "glm-populate"
+	}
+}

@@ -1,0 +1,680 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 10.0.22000 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      閫傜敤浜?.NET Framework MSBuild 鐗堟湰 17.12.12+1cce77968
+      鐢熸垚鍚姩鏃堕棿涓?2026/5/13 23:13:36銆?
+      
+      鑺傜偣 1 涓婄殑椤圭洰鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj鈥?榛樿鐩爣)銆?
+      PrepareForBuild:
+        姝ｅ湪鍒涘缓鐩綍鈥淒ebug\\鈥濄€?
+        宸插惎鐢ㄧ粨鏋勫寲杈撳嚭銆傜紪璇戝櫒璇婃柇鐨勬牸寮忚缃皢鍙嶆槧閿欒灞傛缁撴瀯銆傛湁鍏宠缁嗕俊鎭紝璇峰弬闃?https://aka.ms/cpp/structured-output銆?
+        姝ｅ湪鍒涘缓鐩綍鈥淒ebug\\CompilerIdCXX.tlog\\鈥濄€?
+      InitializeBuildStatus:
+        姝ｅ湪鍒涘缓鈥淒ebug\\CompilerIdCXX.tlog\\unsuccessfulbuild鈥濓紝鍥犱负宸叉寚瀹氣€淎lwaysCreate鈥濄€?
+        姝ｅ湪瀵光€淒ebug\\CompilerIdCXX.tlog\\unsuccessfulbuild鈥濇墽琛?Touch 浠诲姟銆?
+      VcpkgTripletSelection:
+        Using triplet "x64-windows" from "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\"
+        Using normalized configuration "Release"
+      ClCompile:
+        d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\include" /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\lib" /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdCXX\\CompilerIdCXX.exe
+      AppLocalFromInstalled:
+        pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdCXX\\CompilerIdCXX.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+        'pwsh.exe' 涓嶆槸鍐呴儴鎴栧閮ㄥ懡浠わ紝涔熶笉鏄彲杩愯鐨勭▼搴?
+        鎴栨壒澶勭悊鏂囦欢銆?
+        鍛戒护鈥減wsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdCXX\\CompilerIdCXX.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"鈥濆凡閫€鍑猴紝浠ｇ爜涓?9009銆?
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdCXX\\CompilerIdCXX.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        姝ｅ湪鍒犻櫎鏂囦欢鈥淒ebug\\CompilerIdCXX.tlog\\unsuccessfulbuild鈥濄€?
+        姝ｅ湪瀵光€淒ebug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate鈥濇墽琛?Touch 浠诲姟銆?
+      宸插畬鎴愮敓鎴愰」鐩€淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj鈥?榛樿鐩爣)鐨勬搷浣溿€?
+      
+      宸叉垚鍔熺敓鎴愩€?
+          0 涓鍛?
+          0 涓敊璇?
+      
+      宸茬敤鏃堕棿 00:00:03.88
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/3.30.3/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-str5v8"
+      binary: "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-str5v8"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-str5v8'
+        
+        Run Build Command(s): "d:/setup/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_27bb8.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        閫傜敤浜?.NET Framework MSBuild 鐗堟湰 17.12.12+1cce77968
+        鐢熸垚鍚姩鏃堕棿涓?2026/5/13 23:13:41銆?
+        
+        鑺傜偣 1 涓婄殑椤圭洰鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-str5v8\\cmTC_27bb8.vcxproj鈥?榛樿鐩爣)銆?
+        PrepareForBuild:
+          姝ｅ湪鍒涘缓鐩綍鈥渃mTC_27bb8.dir\\Debug\\鈥濄€?
+          宸插惎鐢ㄧ粨鏋勫寲杈撳嚭銆傜紪璇戝櫒璇婃柇鐨勬牸寮忚缃皢鍙嶆槧閿欒灞傛缁撴瀯銆傛湁鍏宠缁嗕俊鎭紝璇峰弬闃?https://aka.ms/cpp/structured-output銆?
+          姝ｅ湪鍒涘缓鐩綍鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-str5v8\\Debug\\鈥濄€?
+          姝ｅ湪鍒涘缓鐩綍鈥渃mTC_27bb8.dir\\Debug\\cmTC_27bb8.tlog\\鈥濄€?
+        InitializeBuildStatus:
+          姝ｅ湪鍒涘缓鈥渃mTC_27bb8.dir\\Debug\\cmTC_27bb8.tlog\\unsuccessfulbuild鈥濓紝鍥犱负宸叉寚瀹氣€淎lwaysCreate鈥濄€?
+          姝ｅ湪瀵光€渃mTC_27bb8.dir\\Debug\\cmTC_27bb8.tlog\\unsuccessfulbuild鈥濇墽琛?Touch 浠诲姟銆?
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\"
+          Using normalized configuration "Debug"
+        ClCompile:
+          d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_27bb8.dir\\Debug\\\\" /Fd"cmTC_27bb8.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "D:\\setup\\CMake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+          鐢ㄤ簬 x64 鐨?Microsoft (R) C/C++ 浼樺寲缂栬瘧鍣?19.42.34435 鐗?
+          鐗堟潈鎵€鏈?C) Microsoft Corporation銆備繚鐣欐墍鏈夋潈鍒┿€?
+          cl /c /I"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_27bb8.dir\\Debug\\\\" /Fd"cmTC_27bb8.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "D:\\setup\\CMake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+          CMakeCXXCompilerABI.cpp
+        Link:
+          d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-str5v8\\Debug\\cmTC_27bb8.exe" /INCREMENTAL /ILK:"cmTC_27bb8.dir\\Debug\\cmTC_27bb8.ilk" /NOLOGO /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\lib" /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-str5v8/Debug/cmTC_27bb8.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-str5v8/Debug/cmTC_27bb8.lib" /MACHINE:X64  /machine:x64 cmTC_27bb8.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_27bb8.vcxproj -> D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-str5v8\\Debug\\cmTC_27bb8.exe
+        AppLocalFromInstalled:
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-str5v8\\Debug\\cmTC_27bb8.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\bin" "cmTC_27bb8.dir\\Debug\\cmTC_27bb8.tlog\\cmTC_27bb8.write.1u.tlog" "cmTC_27bb8.dir\\Debug\\vcpkg.applocal.log"
+          'pwsh.exe' 涓嶆槸鍐呴儴鎴栧閮ㄥ懡浠わ紝涔熶笉鏄彲杩愯鐨勭▼搴?
+          鎴栨壒澶勭悊鏂囦欢銆?
+          鍛戒护鈥減wsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-str5v8\\Debug\\cmTC_27bb8.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\bin" "cmTC_27bb8.dir\\Debug\\cmTC_27bb8.tlog\\cmTC_27bb8.write.1u.tlog" "cmTC_27bb8.dir\\Debug\\vcpkg.applocal.log"鈥濆凡閫€鍑猴紝浠ｇ爜涓?9009銆?
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-str5v8\\Debug\\cmTC_27bb8.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\bin" "cmTC_27bb8.dir\\Debug\\cmTC_27bb8.tlog\\cmTC_27bb8.write.1u.tlog" "cmTC_27bb8.dir\\Debug\\vcpkg.applocal.log"
+        FinalizeBuildStatus:
+          姝ｅ湪鍒犻櫎鏂囦欢鈥渃mTC_27bb8.dir\\Debug\\cmTC_27bb8.tlog\\unsuccessfulbuild鈥濄€?
+          姝ｅ湪瀵光€渃mTC_27bb8.dir\\Debug\\cmTC_27bb8.tlog\\cmTC_27bb8.lastbuildstate鈥濇墽琛?Touch 浠诲姟銆?
+        宸插畬鎴愮敓鎴愰」鐩€淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-str5v8\\cmTC_27bb8.vcxproj鈥?榛樿鐩爣)鐨勬搷浣溿€?
+        
+        宸叉垚鍔熺敓鎴愩€?
+            0 涓鍛?
+            0 涓敊璇?
+        
+        宸茬敤鏃堕棿 00:00:04.32
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'CXX': d:/setup/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.42.34433/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "d:/setup/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.42.34433/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.42.34435.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineSystem.cmake:205 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Windows - 10.0.22000 - AMD64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      閫傜敤浜?.NET Framework MSBuild 鐗堟湰 17.12.12+1cce77968
+      鐢熸垚鍚姩鏃堕棿涓?2026/5/14 0:19:10銆?
+      
+      鑺傜偣 1 涓婄殑椤圭洰鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj鈥?榛樿鐩爣)銆?
+      PrepareForBuild:
+        姝ｅ湪鍒涘缓鐩綍鈥淒ebug\\鈥濄€?
+        宸插惎鐢ㄧ粨鏋勫寲杈撳嚭銆傜紪璇戝櫒璇婃柇鐨勬牸寮忚缃皢鍙嶆槧閿欒灞傛缁撴瀯銆傛湁鍏宠缁嗕俊鎭紝璇峰弬闃?https://aka.ms/cpp/structured-output銆?
+        姝ｅ湪鍒涘缓鐩綍鈥淒ebug\\CompilerIdCXX.tlog\\鈥濄€?
+      InitializeBuildStatus:
+        姝ｅ湪鍒涘缓鈥淒ebug\\CompilerIdCXX.tlog\\unsuccessfulbuild鈥濓紝鍥犱负宸叉寚瀹氣€淎lwaysCreate鈥濄€?
+        姝ｅ湪瀵光€淒ebug\\CompilerIdCXX.tlog\\unsuccessfulbuild鈥濇墽琛?Touch 浠诲姟銆?
+      VcpkgTripletSelection:
+        Using triplet "x64-windows" from "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\"
+        Using normalized configuration "Release"
+      ClCompile:
+        d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\include" /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
+        CMakeCXXCompilerId.cpp
+      Link:
+        d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\lib" /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
+        CompilerIdCXX.vcxproj -> D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdCXX\\CompilerIdCXX.exe
+      AppLocalFromInstalled:
+        pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdCXX\\CompilerIdCXX.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+        'pwsh.exe' 涓嶆槸鍐呴儴鎴栧閮ㄥ懡浠わ紝涔熶笉鏄彲杩愯鐨勭▼搴?
+        鎴栨壒澶勭悊鏂囦欢銆?
+        鍛戒护鈥減wsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdCXX\\CompilerIdCXX.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"鈥濆凡閫€鍑猴紝浠ｇ爜涓?9009銆?
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdCXX\\CompilerIdCXX.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\bin" "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_CXX_COMPILER=d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        姝ｅ湪鍒犻櫎鏂囦欢鈥淒ebug\\CompilerIdCXX.tlog\\unsuccessfulbuild鈥濄€?
+        姝ｅ湪瀵光€淒ebug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate鈥濇墽琛?Touch 浠诲姟銆?
+      宸插畬鎴愮敓鎴愰」鐩€淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj鈥?榛樿鐩爣)鐨勬搷浣溿€?
+      
+      宸叉垚鍔熺敓鎴愩€?
+          0 涓鍛?
+          0 涓敊璇?
+      
+      宸茬敤鏃堕棿 00:00:01.41
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      
+      The CXX compiler identification is MSVC, found in:
+        D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/3.30.3/CompilerIdCXX/CompilerIdCXX.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-h9p3jd"
+      binary: "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-h9p3jd"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
+      CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-h9p3jd'
+        
+        Run Build Command(s): "d:/setup/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_d25b8.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        閫傜敤浜?.NET Framework MSBuild 鐗堟湰 17.12.12+1cce77968
+        鐢熸垚鍚姩鏃堕棿涓?2026/5/14 0:19:12銆?
+        
+        鑺傜偣 1 涓婄殑椤圭洰鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-h9p3jd\\cmTC_d25b8.vcxproj鈥?榛樿鐩爣)銆?
+        PrepareForBuild:
+          姝ｅ湪鍒涘缓鐩綍鈥渃mTC_d25b8.dir\\Debug\\鈥濄€?
+          宸插惎鐢ㄧ粨鏋勫寲杈撳嚭銆傜紪璇戝櫒璇婃柇鐨勬牸寮忚缃皢鍙嶆槧閿欒灞傛缁撴瀯銆傛湁鍏宠缁嗕俊鎭紝璇峰弬闃?https://aka.ms/cpp/structured-output銆?
+          姝ｅ湪鍒涘缓鐩綍鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-h9p3jd\\Debug\\鈥濄€?
+          姝ｅ湪鍒涘缓鐩綍鈥渃mTC_d25b8.dir\\Debug\\cmTC_d25b8.tlog\\鈥濄€?
+        InitializeBuildStatus:
+          姝ｅ湪鍒涘缓鈥渃mTC_d25b8.dir\\Debug\\cmTC_d25b8.tlog\\unsuccessfulbuild鈥濓紝鍥犱负宸叉寚瀹氣€淎lwaysCreate鈥濄€?
+          姝ｅ湪瀵光€渃mTC_d25b8.dir\\Debug\\cmTC_d25b8.tlog\\unsuccessfulbuild鈥濇墽琛?Touch 浠诲姟銆?
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\"
+          Using normalized configuration "Debug"
+        ClCompile:
+          d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_d25b8.dir\\Debug\\\\" /Fd"cmTC_d25b8.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "D:\\setup\\CMake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+          鐢ㄤ簬 x64 鐨?Microsoft (R) C/C++ 浼樺寲缂栬瘧鍣?19.42.34435 鐗?
+          鐗堟潈鎵€鏈?C) Microsoft Corporation銆備繚鐣欐墍鏈夋潈鍒┿€?
+          cl /c /I"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /GR /Fo"cmTC_d25b8.dir\\Debug\\\\" /Fd"cmTC_d25b8.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "D:\\setup\\CMake\\share\\cmake-3.30\\Modules\\CMakeCXXCompilerABI.cpp"
+          CMakeCXXCompilerABI.cpp
+        Link:
+          d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-h9p3jd\\Debug\\cmTC_d25b8.exe" /INCREMENTAL /ILK:"cmTC_d25b8.dir\\Debug\\cmTC_d25b8.ilk" /NOLOGO /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\lib" /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-h9p3jd/Debug/cmTC_d25b8.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-h9p3jd/Debug/cmTC_d25b8.lib" /MACHINE:X64  /machine:x64 cmTC_d25b8.dir\\Debug\\CMakeCXXCompilerABI.obj
+          cmTC_d25b8.vcxproj -> D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-h9p3jd\\Debug\\cmTC_d25b8.exe
+        AppLocalFromInstalled:
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-h9p3jd\\Debug\\cmTC_d25b8.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\bin" "cmTC_d25b8.dir\\Debug\\cmTC_d25b8.tlog\\cmTC_d25b8.write.1u.tlog" "cmTC_d25b8.dir\\Debug\\vcpkg.applocal.log"
+          'pwsh.exe' 涓嶆槸鍐呴儴鎴栧閮ㄥ懡浠わ紝涔熶笉鏄彲杩愯鐨勭▼搴?
+          鎴栨壒澶勭悊鏂囦欢銆?
+          鍛戒护鈥減wsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-h9p3jd\\Debug\\cmTC_d25b8.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\bin" "cmTC_d25b8.dir\\Debug\\cmTC_d25b8.tlog\\cmTC_d25b8.write.1u.tlog" "cmTC_d25b8.dir\\Debug\\vcpkg.applocal.log"鈥濆凡閫€鍑猴紝浠ｇ爜涓?9009銆?
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-h9p3jd\\Debug\\cmTC_d25b8.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\bin" "cmTC_d25b8.dir\\Debug\\cmTC_d25b8.tlog\\cmTC_d25b8.write.1u.tlog" "cmTC_d25b8.dir\\Debug\\vcpkg.applocal.log"
+        FinalizeBuildStatus:
+          姝ｅ湪鍒犻櫎鏂囦欢鈥渃mTC_d25b8.dir\\Debug\\cmTC_d25b8.tlog\\unsuccessfulbuild鈥濄€?
+          姝ｅ湪瀵光€渃mTC_d25b8.dir\\Debug\\cmTC_d25b8.tlog\\cmTC_d25b8.lastbuildstate鈥濇墽琛?Touch 浠诲姟銆?
+        宸插畬鎴愮敓鎴愰」鐩€淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-h9p3jd\\cmTC_d25b8.vcxproj鈥?榛樿鐩爣)鐨勬搷浣溿€?
+        
+        宸叉垚鍔熺敓鎴愩€?
+            0 涓鍛?
+            0 涓敊璇?
+        
+        宸茬敤鏃堕棿 00:00:01.15
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'CXX': d:/setup/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.42.34433/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "d:/setup/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.42.34433/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.42.34435.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+...
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "build_vs2022/_deps/glfw-src/CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler:  
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      閫傜敤浜?.NET Framework MSBuild 鐗堟湰 17.12.12+1cce77968
+      鐢熸垚鍚姩鏃堕棿涓?2026/5/14 11:23:57銆?
+      
+      鑺傜偣 1 涓婄殑椤圭洰鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdC\\CompilerIdC.vcxproj鈥?榛樿鐩爣)銆?
+      PrepareForBuild:
+        姝ｅ湪鍒涘缓鐩綍鈥淒ebug\\鈥濄€?
+        宸插惎鐢ㄧ粨鏋勫寲杈撳嚭銆傜紪璇戝櫒璇婃柇鐨勬牸寮忚缃皢鍙嶆槧閿欒灞傛缁撴瀯銆傛湁鍏宠缁嗕俊鎭紝璇峰弬闃?https://aka.ms/cpp/structured-output銆?
+        姝ｅ湪鍒涘缓鐩綍鈥淒ebug\\CompilerIdC.tlog\\鈥濄€?
+      InitializeBuildStatus:
+        姝ｅ湪鍒涘缓鈥淒ebug\\CompilerIdC.tlog\\unsuccessfulbuild鈥濓紝鍥犱负宸叉寚瀹氣€淎lwaysCreate鈥濄€?
+        姝ｅ湪瀵光€淒ebug\\CompilerIdC.tlog\\unsuccessfulbuild鈥濇墽琛?Touch 浠诲姟銆?
+      VcpkgTripletSelection:
+        Using triplet "x64-windows" from "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\"
+        Using normalized configuration "Release"
+      ClCompile:
+        d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\include" /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
+        CMakeCCompilerId.c
+      Link:
+        d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\lib" /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
+        CompilerIdC.vcxproj -> D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdC\\CompilerIdC.exe
+      AppLocalFromInstalled:
+        pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdC\\CompilerIdC.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+        'pwsh.exe' 涓嶆槸鍐呴儴鎴栧閮ㄥ懡浠わ紝涔熶笉鏄彲杩愯鐨勭▼搴?
+        鎴栨壒澶勭悊鏂囦欢銆?
+        鍛戒护鈥減wsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdC\\CompilerIdC.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"鈥濆凡閫€鍑猴紝浠ｇ爜涓?9009銆?
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdC\\CompilerIdC.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\bin" "Debug\\CompilerIdC.tlog\\CompilerIdC.write.1u.tlog" "Debug\\vcpkg.applocal.log"
+      PostBuildEvent:
+        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
+        :VCEnd
+        CMAKE_C_COMPILER=d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\Hostx64\\x64\\cl.exe
+      FinalizeBuildStatus:
+        姝ｅ湪鍒犻櫎鏂囦欢鈥淒ebug\\CompilerIdC.tlog\\unsuccessfulbuild鈥濄€?
+        姝ｅ湪瀵光€淒ebug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate鈥濇墽琛?Touch 浠诲姟銆?
+      宸插畬鎴愮敓鎴愰」鐩€淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\3.30.3\\CompilerIdC\\CompilerIdC.vcxproj鈥?榛樿鐩爣)鐨勬搷浣溿€?
+      
+      宸叉垚鍔熺敓鎴愩€?
+          0 涓鍛?
+          0 涓敊璇?
+      
+      宸茬敤鏃堕棿 00:00:01.58
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      
+      The C compiler identification is MSVC, found in:
+        D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/3.30.3/CompilerIdC/CompilerIdC.exe
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "build_vs2022/_deps/glfw-src/CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-anlk0v"
+      binary: "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-anlk0v"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-anlk0v'
+        
+        Run Build Command(s): "d:/setup/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_12785.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        閫傜敤浜?.NET Framework MSBuild 鐗堟湰 17.12.12+1cce77968
+        鐢熸垚鍚姩鏃堕棿涓?2026/5/14 11:23:59銆?
+        
+        鑺傜偣 1 涓婄殑椤圭洰鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-anlk0v\\cmTC_12785.vcxproj鈥?榛樿鐩爣)銆?
+        PrepareForBuild:
+          姝ｅ湪鍒涘缓鐩綍鈥渃mTC_12785.dir\\Debug\\鈥濄€?
+          宸插惎鐢ㄧ粨鏋勫寲杈撳嚭銆傜紪璇戝櫒璇婃柇鐨勬牸寮忚缃皢鍙嶆槧閿欒灞傛缁撴瀯銆傛湁鍏宠缁嗕俊鎭紝璇峰弬闃?https://aka.ms/cpp/structured-output銆?
+          姝ｅ湪鍒涘缓鐩綍鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-anlk0v\\Debug\\鈥濄€?
+          姝ｅ湪鍒涘缓鐩綍鈥渃mTC_12785.dir\\Debug\\cmTC_12785.tlog\\鈥濄€?
+        InitializeBuildStatus:
+          姝ｅ湪鍒涘缓鈥渃mTC_12785.dir\\Debug\\cmTC_12785.tlog\\unsuccessfulbuild鈥濓紝鍥犱负宸叉寚瀹氣€淎lwaysCreate鈥濄€?
+          姝ｅ湪瀵光€渃mTC_12785.dir\\Debug\\cmTC_12785.tlog\\unsuccessfulbuild鈥濇墽琛?Touch 浠诲姟銆?
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\"
+          Using normalized configuration "Debug"
+        ClCompile:
+          d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_12785.dir\\Debug\\\\" /Fd"cmTC_12785.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\setup\\CMake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
+          鐢ㄤ簬 x64 鐨?Microsoft (R) C/C++ 浼樺寲缂栬瘧鍣?19.42.34435 鐗?
+          鐗堟潈鎵€鏈?C) Microsoft Corporation銆備繚鐣欐墍鏈夋潈鍒┿€?
+          cl /c /I"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_12785.dir\\Debug\\\\" /Fd"cmTC_12785.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\setup\\CMake\\share\\cmake-3.30\\Modules\\CMakeCCompilerABI.c"
+          CMakeCCompilerABI.c
+        Link:
+          d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-anlk0v\\Debug\\cmTC_12785.exe" /INCREMENTAL /ILK:"cmTC_12785.dir\\Debug\\cmTC_12785.ilk" /NOLOGO /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\lib" /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\lib\\manual-link" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-anlk0v/Debug/cmTC_12785.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-anlk0v/Debug/cmTC_12785.lib" /MACHINE:X64  /machine:x64 cmTC_12785.dir\\Debug\\CMakeCCompilerABI.obj
+          cmTC_12785.vcxproj -> D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-anlk0v\\Debug\\cmTC_12785.exe
+        AppLocalFromInstalled:
+          pwsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-anlk0v\\Debug\\cmTC_12785.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\bin" "cmTC_12785.dir\\Debug\\cmTC_12785.tlog\\cmTC_12785.write.1u.tlog" "cmTC_12785.dir\\Debug\\vcpkg.applocal.log"
+          'pwsh.exe' 涓嶆槸鍐呴儴鎴栧閮ㄥ懡浠わ紝涔熶笉鏄彲杩愯鐨勭▼搴?
+          鎴栨壒澶勭悊鏂囦欢銆?
+          鍛戒护鈥減wsh.exe -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-anlk0v\\Debug\\cmTC_12785.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\bin" "cmTC_12785.dir\\Debug\\cmTC_12785.tlog\\cmTC_12785.write.1u.tlog" "cmTC_12785.dir\\Debug\\vcpkg.applocal.log"鈥濆凡閫€鍑猴紝浠ｇ爜涓?9009銆?
+          "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe" -ExecutionPolicy Bypass -noprofile -File "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\scripts\\buildsystems\\msbuild\\applocal.ps1" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-anlk0v\\Debug\\cmTC_12785.exe" "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\bin" "cmTC_12785.dir\\Debug\\cmTC_12785.tlog\\cmTC_12785.write.1u.tlog" "cmTC_12785.dir\\Debug\\vcpkg.applocal.log"
+        FinalizeBuildStatus:
+          姝ｅ湪鍒犻櫎鏂囦欢鈥渃mTC_12785.dir\\Debug\\cmTC_12785.tlog\\unsuccessfulbuild鈥濄€?
+          姝ｅ湪瀵光€渃mTC_12785.dir\\Debug\\cmTC_12785.tlog\\cmTC_12785.lastbuildstate鈥濇墽琛?Touch 浠诲姟銆?
+        宸插畬鎴愮敓鎴愰」鐩€淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-anlk0v\\cmTC_12785.vcxproj鈥?榛樿鐩爣)鐨勬搷浣溿€?
+        
+        宸叉垚鍔熺敓鎴愩€?
+            0 涓鍛?
+            0 涓敊璇?
+        
+        宸茬敤鏃堕棿 00:00:01.70
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "build_vs2022/_deps/glfw-src/CMakeLists.txt:3 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
+        linker tool for 'C': d:/setup/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.42.34433/bin/HostX64/x64/link.exe
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeDetermineCompilerABI.cmake:255 (cmake_determine_linker_id)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "build_vs2022/_deps/glfw-src/CMakeLists.txt:3 (project)"
+    message: |
+      Running the C compiler's linker: "d:/setup/Microsoft Visual Studio/2022/Professional/VC/Tools/MSVC/14.42.34433/bin/HostX64/x64/link.exe" "-v"
+      Microsoft (R) Incremental Linker Version 14.42.34435.0
+      Copyright (C) Microsoft Corporation.  All rights reserved.
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "build_vs2022/_deps/glfw-src/CMakeLists.txt:60 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-pmbyxv"
+      binary: "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-pmbyxv"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-src/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-pmbyxv'
+        
+        Run Build Command(s): "d:/setup/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_4af38.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        閫傜敤浜?.NET Framework MSBuild 鐗堟湰 17.12.12+1cce77968
+        鐢熸垚鍚姩鏃堕棿涓?2026/5/14 11:24:01銆?
+        
+        鑺傜偣 1 涓婄殑椤圭洰鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-pmbyxv\\cmTC_4af38.vcxproj鈥?榛樿鐩爣)銆?
+        PrepareForBuild:
+          姝ｅ湪鍒涘缓鐩綍鈥渃mTC_4af38.dir\\Debug\\鈥濄€?
+          宸插惎鐢ㄧ粨鏋勫寲杈撳嚭銆傜紪璇戝櫒璇婃柇鐨勬牸寮忚缃皢鍙嶆槧閿欒灞傛缁撴瀯銆傛湁鍏宠缁嗕俊鎭紝璇峰弬闃?https://aka.ms/cpp/structured-output銆?
+          姝ｅ湪鍒涘缓鐩綍鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-pmbyxv\\Debug\\鈥濄€?
+          姝ｅ湪鍒涘缓鐩綍鈥渃mTC_4af38.dir\\Debug\\cmTC_4af38.tlog\\鈥濄€?
+        InitializeBuildStatus:
+          姝ｅ湪鍒涘缓鈥渃mTC_4af38.dir\\Debug\\cmTC_4af38.tlog\\unsuccessfulbuild鈥濓紝鍥犱负宸叉寚瀹氣€淎lwaysCreate鈥濄€?
+          姝ｅ湪瀵光€渃mTC_4af38.dir\\Debug\\cmTC_4af38.tlog\\unsuccessfulbuild鈥濇墽琛?Touch 浠诲姟銆?
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\"
+          Using normalized configuration "Debug"
+        ClCompile:
+          d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4af38.dir\\Debug\\\\" /Fd"cmTC_4af38.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-pmbyxv\\src.c"
+          鐢ㄤ簬 x64 鐨?Microsoft (R) C/C++ 浼樺寲缂栬瘧鍣?19.42.34435 鐗?
+          鐗堟潈鎵€鏈?C) Microsoft Corporation銆備繚鐣欐墍鏈夋潈鍒┿€?
+          cl /c /I"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CMAKE_HAVE_LIBC_PTHREAD /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_4af38.dir\\Debug\\\\" /Fd"cmTC_4af38.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-pmbyxv\\src.c"
+          src.c
+        D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-pmbyxv\\src.c(1,10): error C1083: 鏃犳硶鎵撳紑鍖呮嫭鏂囦欢: 鈥減thread.h鈥? No such file or directory [D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-pmbyxv\\cmTC_4af38.vcxproj]
+        宸插畬鎴愮敓鎴愰」鐩€淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-pmbyxv\\cmTC_4af38.vcxproj鈥?榛樿鐩爣)鐨勬搷浣?- 澶辫触銆?
+        
+        鐢熸垚澶辫触銆?
+        
+        鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-pmbyxv\\cmTC_4af38.vcxproj鈥?榛樿鐩爣) (1) ->
+        (ClCompile 鐩爣) -> 
+          D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-pmbyxv\\src.c(1,10): error C1083: 鏃犳硶鎵撳紑鍖呮嫭鏂囦欢: 鈥減thread.h鈥? No such file or directory [D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-pmbyxv\\cmTC_4af38.vcxproj]
+        
+            0 涓鍛?
+            1 涓敊璇?
+        
+        宸茬敤鏃堕棿 00:00:00.53
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/FindThreads.cmake:175 (_threads_check_lib)"
+      - "build_vs2022/_deps/glfw-src/CMakeLists.txt:60 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthreads"
+    directories:
+      source: "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-q980jy"
+      binary: "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-q980jy"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-src/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREADS_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-q980jy'
+        
+        Run Build Command(s): "d:/setup/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_52a8a.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        閫傜敤浜?.NET Framework MSBuild 鐗堟湰 17.12.12+1cce77968
+        鐢熸垚鍚姩鏃堕棿涓?2026/5/14 11:24:01銆?
+        
+        鑺傜偣 1 涓婄殑椤圭洰鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-q980jy\\cmTC_52a8a.vcxproj鈥?榛樿鐩爣)銆?
+        PrepareForBuild:
+          姝ｅ湪鍒涘缓鐩綍鈥渃mTC_52a8a.dir\\Debug\\鈥濄€?
+          宸插惎鐢ㄧ粨鏋勫寲杈撳嚭銆傜紪璇戝櫒璇婃柇鐨勬牸寮忚缃皢鍙嶆槧閿欒灞傛缁撴瀯銆傛湁鍏宠缁嗕俊鎭紝璇峰弬闃?https://aka.ms/cpp/structured-output銆?
+          姝ｅ湪鍒涘缓鐩綍鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-q980jy\\Debug\\鈥濄€?
+          姝ｅ湪鍒涘缓鐩綍鈥渃mTC_52a8a.dir\\Debug\\cmTC_52a8a.tlog\\鈥濄€?
+        InitializeBuildStatus:
+          姝ｅ湪鍒涘缓鈥渃mTC_52a8a.dir\\Debug\\cmTC_52a8a.tlog\\unsuccessfulbuild鈥濓紝鍥犱负宸叉寚瀹氣€淎lwaysCreate鈥濄€?
+          姝ｅ湪瀵光€渃mTC_52a8a.dir\\Debug\\cmTC_52a8a.tlog\\unsuccessfulbuild鈥濇墽琛?Touch 浠诲姟銆?
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\"
+          Using normalized configuration "Debug"
+        ClCompile:
+          d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_52a8a.dir\\Debug\\\\" /Fd"cmTC_52a8a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-q980jy\\CheckFunctionExists.c"
+          鐢ㄤ簬 x64 鐨?Microsoft (R) C/C++ 浼樺寲缂栬瘧鍣?19.42.34435 鐗?
+          鐗堟潈鎵€鏈?C) Microsoft Corporation銆備繚鐣欐墍鏈夋潈鍒┿€?
+          cl /c /I"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_52a8a.dir\\Debug\\\\" /Fd"cmTC_52a8a.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-q980jy\\CheckFunctionExists.c"
+          CheckFunctionExists.c
+        Link:
+          d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-q980jy\\Debug\\cmTC_52a8a.exe" /INCREMENTAL /ILK:"cmTC_52a8a.dir\\Debug\\cmTC_52a8a.ilk" /NOLOGO /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\lib" /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\lib\\manual-link" pthreads.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-q980jy/Debug/cmTC_52a8a.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-q980jy/Debug/cmTC_52a8a.lib" /MACHINE:X64  /machine:x64 cmTC_52a8a.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: 鏃犳硶鎵撳紑鏂囦欢鈥減threads.lib鈥?[D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-q980jy\\cmTC_52a8a.vcxproj]
+        宸插畬鎴愮敓鎴愰」鐩€淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-q980jy\\cmTC_52a8a.vcxproj鈥?榛樿鐩爣)鐨勬搷浣?- 澶辫触銆?
+        
+        鐢熸垚澶辫触銆?
+        
+        鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-q980jy\\cmTC_52a8a.vcxproj鈥?榛樿鐩爣) (1) ->
+        (Link 鐩爣) -> 
+          LINK : fatal error LNK1104: 鏃犳硶鎵撳紑鏂囦欢鈥減threads.lib鈥?[D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-q980jy\\cmTC_52a8a.vcxproj]
+        
+            0 涓鍛?
+            1 涓敊璇?
+        
+        宸茬敤鏃堕棿 00:00:00.64
+        
+      exitCode: 1
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "D:/setup/CMake/share/cmake-3.30/Modules/CheckLibraryExists.cmake:69 (try_compile)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/FindThreads.cmake:112 (CHECK_LIBRARY_EXISTS)"
+      - "D:/setup/CMake/share/cmake-3.30/Modules/FindThreads.cmake:176 (_threads_check_lib)"
+      - "build_vs2022/_deps/glfw-src/CMakeLists.txt:60 (find_package)"
+    checks:
+      - "Looking for pthread_create in pthread"
+    directories:
+      source: "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-5ugj51"
+      binary: "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-5ugj51"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
+      CMAKE_C_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
+      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_MODULE_PATH: "D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/_deps/glfw-src/CMake/modules"
+    buildResult:
+      variable: "CMAKE_HAVE_PTHREAD_CREATE"
+      cached: true
+      stdout: |
+        Change Dir: 'D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-5ugj51'
+        
+        Run Build Command(s): "d:/setup/Microsoft Visual Studio/2022/Professional/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_d4740.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
+        閫傜敤浜?.NET Framework MSBuild 鐗堟湰 17.12.12+1cce77968
+        鐢熸垚鍚姩鏃堕棿涓?2026/5/14 11:24:02銆?
+        
+        鑺傜偣 1 涓婄殑椤圭洰鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-5ugj51\\cmTC_d4740.vcxproj鈥?榛樿鐩爣)銆?
+        PrepareForBuild:
+          姝ｅ湪鍒涘缓鐩綍鈥渃mTC_d4740.dir\\Debug\\鈥濄€?
+          宸插惎鐢ㄧ粨鏋勫寲杈撳嚭銆傜紪璇戝櫒璇婃柇鐨勬牸寮忚缃皢鍙嶆槧閿欒灞傛缁撴瀯銆傛湁鍏宠缁嗕俊鎭紝璇峰弬闃?https://aka.ms/cpp/structured-output銆?
+          姝ｅ湪鍒涘缓鐩綍鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-5ugj51\\Debug\\鈥濄€?
+          姝ｅ湪鍒涘缓鐩綍鈥渃mTC_d4740.dir\\Debug\\cmTC_d4740.tlog\\鈥濄€?
+        InitializeBuildStatus:
+          姝ｅ湪鍒涘缓鈥渃mTC_d4740.dir\\Debug\\cmTC_d4740.tlog\\unsuccessfulbuild鈥濓紝鍥犱负宸叉寚瀹氣€淎lwaysCreate鈥濄€?
+          姝ｅ湪瀵光€渃mTC_d4740.dir\\Debug\\cmTC_d4740.tlog\\unsuccessfulbuild鈥濇墽琛?Touch 浠诲姟銆?
+        VcpkgTripletSelection:
+          Using triplet "x64-windows" from "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\"
+          Using normalized configuration "Debug"
+        ClCompile:
+          d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\CL.exe /c /I"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d4740.dir\\Debug\\\\" /Fd"cmTC_d4740.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-5ugj51\\CheckFunctionExists.c"
+          鐢ㄤ簬 x64 鐨?Microsoft (R) C/C++ 浼樺寲缂栬瘧鍣?19.42.34435 鐗?
+          鐗堟潈鎵€鏈?C) Microsoft Corporation銆備繚鐣欐墍鏈夋潈鍒┿€?
+          cl /c /I"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\include" /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D CHECK_FUNCTION_EXISTS=pthread_create /D "CMAKE_INTDIR=\\"Debug\\"" /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_d4740.dir\\Debug\\\\" /Fd"cmTC_d4740.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-5ugj51\\CheckFunctionExists.c"
+          CheckFunctionExists.c
+        Link:
+          d:\\setup\\Microsoft Visual Studio\\2022\\Professional\\VC\\Tools\\MSVC\\14.42.34433\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-5ugj51\\Debug\\cmTC_d4740.exe" /INCREMENTAL /ILK:"cmTC_d4740.dir\\Debug\\cmTC_d4740.ilk" /NOLOGO /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\lib" /LIBPATH:"D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\lib\\manual-link" pthread.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib "D:\\WorkSpace\\Agent\\MultiSoloSpace\\vcpkg-master\\installed\\x64-windows\\debug\\lib\\*.lib" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-5ugj51/Debug/cmTC_d4740.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:/WorkSpace/Agent/MultiSoloSpace/0513/create3D/build_vs2022/CMakeFiles/CMakeScratch/TryCompile-5ugj51/Debug/cmTC_d4740.lib" /MACHINE:X64  /machine:x64 cmTC_d4740.dir\\Debug\\CheckFunctionExists.obj
+        LINK : fatal error LNK1104: 鏃犳硶鎵撳紑鏂囦欢鈥減thread.lib鈥?[D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-5ugj51\\cmTC_d4740.vcxproj]
+        宸插畬鎴愮敓鎴愰」鐩€淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-5ugj51\\cmTC_d4740.vcxproj鈥?榛樿鐩爣)鐨勬搷浣?- 澶辫触銆?
+        
+        鐢熸垚澶辫触銆?
+        
+        鈥淒:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-5ugj51\\cmTC_d4740.vcxproj鈥?榛樿鐩爣) (1) ->
+        (Link 鐩爣) -> 
+          LINK : fatal error LNK1104: 鏃犳硶鎵撳紑鏂囦欢鈥減thread.lib鈥?[D:\\WorkSpace\\Agent\\MultiSoloSpace\\0513\\create3D\\build_vs2022\\CMakeFiles\\CMakeScratch\\TryCompile-5ugj51\\cmTC_d4740.vcxproj]
+        
+            0 涓鍛?
+            1 涓敊璇?
+        
+        宸茬敤鏃堕棿 00:00:00.76
+        
+      exitCode: 1
+...

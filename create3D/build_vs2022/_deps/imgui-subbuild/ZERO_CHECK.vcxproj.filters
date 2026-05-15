@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="D:\WorkSpace\Agent\MultiSoloSpace\0513\create3D\build_vs2022\_deps\imgui-subbuild\CMakeFiles\64d68626c6fbfa142d643a709f270e1c\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{DDE2E1E0-50D2-3BD5-84C2-3CD3F1A91E80}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

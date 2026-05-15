@@ -1,0 +1,44 @@
+<Window x:Class="XProxyClient.Views.SubscriptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="订阅管理" Height="450" Width="600"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="名称:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox Name="NameTextBox" Width="150" Margin="0,0,10,0"/>
+            <TextBlock Text="URL:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox Name="UrlTextBox" Width="200" Margin="0,0,10,0"/>
+            <Button Name="AddSubscriptionButton" Content="添加" Width="60" Click="AddSubscriptionButton_Click"/>
+        </StackPanel>
+
+        <ListBox Name="SubscriptionListBox" Grid.Row="1" Grid.Column="0" Margin="0,0,0,10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Url}" FontSize="10"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top">
+            <Button Name="UpdateSubscriptionButton" Content="更新" Width="80" Margin="0,0,0,10" Click="UpdateSubscriptionButton_Click"/>
+            <Button Name="DeleteSubscriptionButton" Content="删除" Width="80" Margin="0,0,0,10" Click="DeleteSubscriptionButton_Click"/>
+            <Button Name="UpdateAllButton" Content="全部更新" Width="80" Click="UpdateAllButton_Click"/>
+        </StackPanel>
+
+        <Button Name="CloseButton" Grid.Row="2" Grid.Column="1" Content="关闭" Width="80" HorizontalAlignment="Right" Click="CloseButton_Click"/>
+    </Grid>
+</Window>
