@@ -11,26 +11,30 @@ Canvas canvas;
 bool isPanning = false;
 POINT lastMousePos;
 
-const int TOOLBAR_HEIGHT = 50;
-const int BOTTOMBAR_HEIGHT = 60;
-const int BUTTON_WIDTH = 110;
-const int BUTTON_HEIGHT = 38;
+const int TOOLBAR_HEIGHT = 56;
+const int BOTTOMBAR_HEIGHT = 50;
+const int BUTTON_WIDTH = 95;
+const int BUTTON_HEIGHT = 36;
+const int BUTTON_SPACING = 8;
 
 struct ToolButton {
     int commandId;
     const wchar_t* text;
+    const wchar_t* icon;
     COLORREF color;
 };
 
 ToolButton toolButtons[] = {
-    { IDM_DRAW_LINE, L"Line", RGB(70, 130, 180) },
-    { IDM_DRAW_CIRCLE, L"Circle", RGB(200, 100, 0) },
-    { IDM_DRAW_RECTANGLE, L"Rectangle", RGB(0, 150, 100) },
-    { IDM_DRAW_TRIANGLE, L"Triangle", RGB(150, 0, 150) },
-    { IDM_STYLE_FILL, L"Fill", RGB(120, 120, 200) },
-    { IDM_VIEW_NAVIGATION, L"Navigate", RGB(100, 100, 100) },
-    { IDM_EDIT_CLEAR, L"Clear", RGB(180, 60, 60) },
-    { IDM_VIEW_RESET, L"Reset", RGB(80, 80, 80) }
+    { IDM_DRAW_LINE, L"Line", L"|", RGB(65, 105, 225) },
+    { IDM_DRAW_CIRCLE, L"Circle", L"O", RGB(255, 107, 107) },
+    { IDM_DRAW_RECTANGLE, L"Rect", L"#", RGB(78, 205, 196) },
+    { IDM_DRAW_TRIANGLE, L"Tri", L"A", RGB(199, 125, 255) },
+    { IDM_STYLE_FILL, L"Fill", L"F", RGB(120, 144, 156) },
+    { IDM_EDIT_CLIP, L"Clip", L"C", RGB(255, 152, 0) },
+    { IDM_EDIT_MIRROR, L"Mirror", L"M", RGB(0, 188, 212) },
+    { IDM_VIEW_NAVIGATION, L"Nav", L"N", RGB(96, 125, 139) },
+    { IDM_EDIT_CLEAR, L"Clear", L"X", RGB(244, 67, 54) },
+    { IDM_VIEW_RESET, L"Reset", L"R", RGB(158, 158, 158) }
 };
 const int TOOLBAR_BUTTON_COUNT = sizeof(toolButtons) / sizeof(toolButtons[0]);
 
@@ -39,9 +43,10 @@ TriangleType currentTriangleType = TRIANGLE_EQUILATERAL;
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 void DrawToolBar(HDC hdc, RECT* rect);
 void DrawBottomBar(HDC hdc, RECT* rect);
-void DrawButton(HDC hdc, int x, int y, int width, int height, const wchar_t* text, COLORREF color, bool selected);
+void DrawButton(HDC hdc, int x, int y, int width, int height, const wchar_t* text, const wchar_t* icon, COLORREF color, bool selected);
 int GetButtonAtPosition(int x, int y);
 int GetTriangleButtonAtPosition(int x, int y, RECT* rect);
+int GetShapeAtPosition(const POINT& mousePos, const RECT& rect);
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
     hInst = hInstance;
@@ -95,8 +100,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
     case WM_SIZE: {
         RECT rect;
         GetClientRect(hWnd, &rect);
-        int canvasHeight = rect.bottom - TOOLBAR_HEIGHT - 
-            (canvas.getCreatingShapeType() == ShapeType::Triangle ? BOTTOMBAR_HEIGHT : 0);
+        int canvasHeight = rect.bottom - TOOLBAR_HEIGHT - BOTTOMBAR_HEIGHT;
         canvas.setWindowSize(rect.right, canvasHeight);
         InvalidateRect(hWnd, nullptr, FALSE);
         break;
@@ -131,6 +135,16 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
 
         case IDM_STYLE_FILL:
             canvas.setFillEnabled(!canvas.isFillEnabled());
+            InvalidateRect(hWnd, nullptr, FALSE);
+            break;
+
+        case IDM_EDIT_CLIP:
+            canvas.startClipMode();
+            InvalidateRect(hWnd, nullptr, FALSE);
+            break;
+
+        case IDM_EDIT_MIRROR:
+            canvas.startMirrorMode();
             InvalidateRect(hWnd, nullptr, FALSE);
             break;
 
@@ -206,6 +220,54 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
                     isPanning = true;
                     lastMousePos = mousePos;
                     SetCursor(LoadCursor(nullptr, IDC_SIZEALL));
+                }
+                else if (canvas.getEditMode() == EditMode::SelectBoundary) {
+                    int shapeIndex = GetShapeAtPosition(mousePos, rect);
+                    if (shapeIndex >= 0) {
+                        const auto& shapes = canvas.getShapes();
+                        if (shapes[shapeIndex]->getType() == ShapeType::Line) {
+                            bool alreadySelected = false;
+                            for (int idx : canvas.boundaryShapeIndices) {
+                                if (idx == shapeIndex) {
+                                    alreadySelected = true;
+                                    break;
+                                }
+                            }
+                            if (!alreadySelected) {
+                                canvas.boundaryShapeIndices.push_back(shapeIndex);
+                                shapes[shapeIndex]->selected = true;
+                                InvalidateRect(hWnd, nullptr, FALSE);
+                            }
+                        }
+                    }
+                }
+                else if (canvas.getEditMode() == EditMode::SelectShapeToClip) {
+                    int shapeIndex = GetShapeAtPosition(mousePos, rect);
+                    if (shapeIndex >= 0) {
+                        canvas.performClip(shapeIndex, worldPos);
+                        InvalidateRect(hWnd, nullptr, FALSE);
+                    }
+                }
+                else if (canvas.getEditMode() == EditMode::SelectMirrorShape) {
+                    int shapeIndex = GetShapeAtPosition(mousePos, rect);
+                    if (shapeIndex >= 0) {
+                        canvas.mirrorShapeIndex = shapeIndex;
+                        canvas.setSelectedShapeIndex(shapeIndex);
+                        canvas.setEditMode(EditMode::SelectMirrorLine);
+                        InvalidateRect(hWnd, nullptr, FALSE);
+                    }
+                }
+                else if (canvas.getEditMode() == EditMode::SelectMirrorLine) {
+                    int shapeIndex = GetShapeAtPosition(mousePos, rect);
+                    if (shapeIndex >= 0) {
+                        const auto& shapes = canvas.getShapes();
+                        if (shapes[shapeIndex]->getType() == ShapeType::Line) {
+                            canvas.mirrorLineIndex = shapeIndex;
+                            canvas.setSelectedShapeIndex(shapeIndex);
+                            canvas.performMirror();
+                            InvalidateRect(hWnd, nullptr, FALSE);
+                        }
+                    }
                 }
                 else if (isTriangleMode) {
                     canvas.setTriangleType(currentTriangleType);
@@ -300,6 +362,23 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
             canvas.setCreatingShapeType(ShapeType::None);
             InvalidateRect(hWnd, nullptr, FALSE);
         }
+        else if (canvas.getEditMode() == EditMode::SelectBoundary) {
+            if (!canvas.boundaryShapeIndices.empty()) {
+                canvas.setEditMode(EditMode::SelectShapeToClip);
+                InvalidateRect(hWnd, nullptr, FALSE);
+            } else {
+                canvas.exitClipMode();
+                InvalidateRect(hWnd, nullptr, FALSE);
+            }
+        }
+        else if (canvas.getEditMode() == EditMode::SelectShapeToClip) {
+            canvas.exitClipMode();
+            InvalidateRect(hWnd, nullptr, FALSE);
+        }
+        else if (canvas.getEditMode() == EditMode::SelectMirrorShape || canvas.getEditMode() == EditMode::SelectMirrorLine) {
+            canvas.exitMirrorMode();
+            InvalidateRect(hWnd, nullptr, FALSE);
+        }
         break;
     }
 
@@ -351,8 +430,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
         canvasRect.left = 0;
         canvasRect.top = TOOLBAR_HEIGHT;
         canvasRect.right = rect.right;
-        canvasRect.bottom = rect.bottom - 
-            (canvas.getCreatingShapeType() == ShapeType::Triangle ? BOTTOMBAR_HEIGHT : 0);
+        canvasRect.bottom = rect.bottom - BOTTOMBAR_HEIGHT;
 
         HDC hCanvasDC = CreateCompatibleDC(hMemDC);
         HBITMAP hCanvasBitmap = CreateCompatibleBitmap(hMemDC, 
@@ -376,9 +454,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
         DeleteObject(hCanvasBitmap);
         DeleteDC(hCanvasDC);
 
-        if (canvas.getCreatingShapeType() == ShapeType::Triangle) {
-            DrawBottomBar(hMemDC, &rect);
-        }
+        DrawBottomBar(hMemDC, &rect);
 
         BitBlt(hdc, 0, 0, rect.right, rect.bottom, hMemDC, 0, 0, SRCCOPY);
 
@@ -400,48 +476,65 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) 
     return 0;
 }
 
-void DrawButton(HDC hdc, int x, int y, int width, int height, const wchar_t* text, COLORREF color, bool selected) {
+void DrawButton(HDC hdc, int x, int y, int width, int height, const wchar_t* text, const wchar_t* icon, COLORREF color, bool selected) {
     RECT btnRect = { x, y, x + width, y + height };
     
+    HBRUSH hBtnBrush;
     if (selected) {
-        HBRUSH hBtnBrush = CreateSolidBrush(color);
-        RoundRect(hdc, btnRect.left, btnRect.top, btnRect.right, btnRect.bottom, 8, 8);
-        DeleteObject(hBtnBrush);
-        
-        HPEN hBorderPen = CreatePen(PS_SOLID, 2, color);
-        HPEN hOldPen = (HPEN)SelectObject(hdc, hBorderPen);
-        SelectObject(hdc, GetStockObject(NULL_BRUSH));
-        RoundRect(hdc, btnRect.left, btnRect.top, btnRect.right, btnRect.bottom, 8, 8);
-        SelectObject(hdc, hOldPen);
-        DeleteObject(hBorderPen);
+        hBtnBrush = CreateSolidBrush(color);
+    } else {
+        hBtnBrush = CreateSolidBrush(RGB(55, 55, 60));
     }
-    else {
-        HBRUSH hBtnBrush = CreateSolidBrush(RGB(60, 60, 65));
-        RoundRect(hdc, btnRect.left, btnRect.top, btnRect.right, btnRect.bottom, 8, 8);
-        DeleteObject(hBtnBrush);
-    }
+    
+    HPEN hShadowPen = CreatePen(PS_SOLID, 1, RGB(30, 30, 35));
+    HPEN hOldPen = (HPEN)SelectObject(hdc, hShadowPen);
+    
+    RoundRect(hdc, btnRect.left + 1, btnRect.top + 1, btnRect.right + 1, btnRect.bottom + 1, 10, 10);
+    
+    HPEN hBorderPen = CreatePen(PS_SOLID, 1, selected ? color : RGB(75, 75, 80));
+    SelectObject(hdc, hBorderPen);
+    SelectObject(hdc, hBtnBrush);
+    
+    RoundRect(hdc, btnRect.left, btnRect.top, btnRect.right, btnRect.bottom, 10, 10);
+    
+    SelectObject(hdc, hOldPen);
+    DeleteObject(hBtnBrush);
+    DeleteObject(hShadowPen);
+    DeleteObject(hBorderPen);
 
     SetBkMode(hdc, TRANSPARENT);
-    SetTextColor(hdc, RGB(240, 240, 240));
-
-    RECT textRect = btnRect;
-    DrawTextW(hdc, text, -1, &textRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+    
+    RECT iconRect = { x + 8, y + 5, x + 32, y + height - 5 };
+    SetTextColor(hdc, selected ? RGB(255, 255, 255) : color);
+    HFONT hIconFont = CreateFontW(22, 0, 0, 0, FW_BOLD, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Segoe UI");
+    HFONT hOldFont = (HFONT)SelectObject(hdc, hIconFont);
+    DrawTextW(hdc, icon, -1, &iconRect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+    
+    RECT textRect = { x + 34, y, x + width - 6, y + height };
+    SetTextColor(hdc, RGB(240, 240, 245));
+    HFONT hTextFont = CreateFontW(14, 0, 0, 0, FW_MEDIUM, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Microsoft YaHei");
+    SelectObject(hdc, hTextFont);
+    DrawTextW(hdc, text, -1, &textRect, DT_LEFT | DT_VCENTER | DT_SINGLELINE);
+    
+    SelectObject(hdc, hOldFont);
+    DeleteObject(hIconFont);
+    DeleteObject(hTextFont);
 }
 
 void DrawToolBar(HDC hdc, RECT* rect) {
-    HBRUSH hToolbarBrush = CreateSolidBrush(RGB(40, 40, 45));
+    HBRUSH hToolbarBrush = CreateSolidBrush(RGB(45, 45, 52));
     RECT toolbarRect = { 0, 0, rect->right, TOOLBAR_HEIGHT };
     FillRect(hdc, &toolbarRect, hToolbarBrush);
     DeleteObject(hToolbarBrush);
 
-    HPEN hBorderPen = CreatePen(PS_SOLID, 1, RGB(60, 60, 65));
+    HPEN hBorderPen = CreatePen(PS_SOLID, 1, RGB(65, 65, 75));
     HPEN hOldPen = (HPEN)SelectObject(hdc, hBorderPen);
     MoveToEx(hdc, 0, TOOLBAR_HEIGHT - 1, NULL);
     LineTo(hdc, rect->right, TOOLBAR_HEIGHT - 1);
     SelectObject(hdc, hOldPen);
     DeleteObject(hBorderPen);
 
-    int startX = 10;
+    int startX = 16;
     int startY = (TOOLBAR_HEIGHT - BUTTON_HEIGHT) / 2;
 
     for (int i = 0; i < TOOLBAR_BUTTON_COUNT; i++) {
@@ -452,19 +545,21 @@ void DrawToolBar(HDC hdc, RECT* rect) {
         if (toolButtons[i].commandId == IDM_DRAW_TRIANGLE && canvas.getCreatingShapeType() == ShapeType::Triangle) selected = true;
         if (toolButtons[i].commandId == IDM_STYLE_FILL && canvas.isFillEnabled()) selected = true;
         if (toolButtons[i].commandId == IDM_VIEW_NAVIGATION && canvas.isNavigationMode()) selected = true;
+        if (toolButtons[i].commandId == IDM_EDIT_CLIP && (canvas.getEditMode() == EditMode::SelectBoundary || canvas.getEditMode() == EditMode::SelectShapeToClip)) selected = true;
+        if (toolButtons[i].commandId == IDM_EDIT_MIRROR && (canvas.getEditMode() == EditMode::SelectMirrorShape || canvas.getEditMode() == EditMode::SelectMirrorLine)) selected = true;
 
-        DrawButton(hdc, startX + i * BUTTON_WIDTH, startY, BUTTON_WIDTH - 10, BUTTON_HEIGHT,
-            toolButtons[i].text, toolButtons[i].color, selected);
+        DrawButton(hdc, startX + i * (BUTTON_WIDTH + BUTTON_SPACING), startY, BUTTON_WIDTH, BUTTON_HEIGHT,
+            toolButtons[i].text, toolButtons[i].icon, toolButtons[i].color, selected);
     }
 }
 
 void DrawBottomBar(HDC hdc, RECT* rect) {
-    HBRUSH hBarBrush = CreateSolidBrush(RGB(40, 40, 45));
+    HBRUSH hBarBrush = CreateSolidBrush(RGB(45, 45, 52));
     RECT barRect = { 0, rect->bottom - BOTTOMBAR_HEIGHT, rect->right, rect->bottom };
     FillRect(hdc, &barRect, hBarBrush);
     DeleteObject(hBarBrush);
 
-    HPEN hBorderPen = CreatePen(PS_SOLID, 1, RGB(60, 60, 65));
+    HPEN hBorderPen = CreatePen(PS_SOLID, 1, RGB(65, 65, 75));
     HPEN hOldPen = (HPEN)SelectObject(hdc, hBorderPen);
     MoveToEx(hdc, 0, rect->bottom - BOTTOMBAR_HEIGHT, NULL);
     LineTo(hdc, rect->right, rect->bottom - BOTTOMBAR_HEIGHT);
@@ -472,29 +567,41 @@ void DrawBottomBar(HDC hdc, RECT* rect) {
     DeleteObject(hBorderPen);
 
     SetBkMode(hdc, TRANSPARENT);
-    SetTextColor(hdc, RGB(200, 200, 200));
-    TextOutW(hdc, 20, rect->bottom - BOTTOMBAR_HEIGHT / 2 - 10, L"Triangle Type:", 15);
+    
+    std::wstring statusText = canvas.getStatusText();
+    
+    HFONT hStatusFont = CreateFontW(15, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Microsoft YaHei");
+    HFONT hOldFont = (HFONT)SelectObject(hdc, hStatusFont);
+    
+    SetTextColor(hdc, RGB(220, 220, 230));
+    TextOutW(hdc, 24, rect->bottom - BOTTOMBAR_HEIGHT / 2 - 8, 
+        statusText.c_str(), (int)statusText.length());
 
-    const wchar_t* triangleTypes[] = { L"Equilateral", L"Isosceles", L"Right Angle" };
-    TriangleType types[] = { TRIANGLE_EQUILATERAL, TRIANGLE_ISOSCELES, TRIANGLE_RIGHT };
+    if (canvas.getCreatingShapeType() == ShapeType::Triangle) {
+        const wchar_t* triangleTypes[] = { L"Equilateral", L"Isosceles", L"Right Angle" };
+        TriangleType types[] = { TRIANGLE_EQUILATERAL, TRIANGLE_ISOSCELES, TRIANGLE_RIGHT };
 
-    int btnWidth = 130;
-    int btnHeight = 35;
-    int startX = 160;
-    int startY = rect->bottom - BOTTOMBAR_HEIGHT + (BOTTOMBAR_HEIGHT - btnHeight) / 2;
+        int btnWidth = 110;
+        int btnHeight = 32;
+        int startX = 320;
+        int startY = rect->bottom - BOTTOMBAR_HEIGHT + (BOTTOMBAR_HEIGHT - btnHeight) / 2;
 
-    for (int i = 0; i < 3; i++) {
-        bool selected = (currentTriangleType == types[i]);
-        DrawButton(hdc, startX + i * btnWidth, startY, btnWidth - 10, btnHeight,
-            triangleTypes[i], RGB(150, 0, 150), selected);
+        for (int i = 0; i < 3; i++) {
+            bool selected = (currentTriangleType == types[i]);
+            DrawButton(hdc, startX + i * (btnWidth + BUTTON_SPACING), startY, btnWidth, btnHeight,
+                triangleTypes[i], L"", RGB(199, 125, 255), selected);
+        }
     }
+    
+    SelectObject(hdc, hOldFont);
+    DeleteObject(hStatusFont);
 }
 
 int GetButtonAtPosition(int x, int y) {
     if (y >= 0 && y < TOOLBAR_HEIGHT) {
-        int startX = 10;
+        int startX = 16;
         for (int i = 0; i < TOOLBAR_BUTTON_COUNT; i++) {
-            if (x >= startX + i * BUTTON_WIDTH && x < startX + (i + 1) * BUTTON_WIDTH - 10) {
+            if (x >= startX + i * (BUTTON_WIDTH + BUTTON_SPACING) && x < startX + i * (BUTTON_WIDTH + BUTTON_SPACING) + BUTTON_WIDTH) {
                 return i;
             }
         }
@@ -505,12 +612,28 @@ int GetButtonAtPosition(int x, int y) {
 int GetTriangleButtonAtPosition(int x, int y, RECT* rect) {
     int bottomBarY = rect->bottom - BOTTOMBAR_HEIGHT;
     if (y >= bottomBarY && y < rect->bottom) {
-        int btnWidth = 130;
-        int startX = 160;
+        int btnWidth = 110;
+        int startX = 320;
         for (int i = 0; i < 3; i++) {
-            if (x >= startX + i * btnWidth && x < startX + (i + 1) * btnWidth - 10) {
+            if (x >= startX + i * (btnWidth + BUTTON_SPACING) && x < startX + i * (btnWidth + BUTTON_SPACING) + btnWidth) {
                 return i;
             }
+        }
+    }
+    return -1;
+}
+
+int GetShapeAtPosition(const POINT& mousePos, const RECT& rect) {
+    if (mousePos.y <= TOOLBAR_HEIGHT) return -1;
+    
+    int canvasY = mousePos.y - TOOLBAR_HEIGHT;
+    Point2D worldPos = canvas.screenToWorld(POINT{ mousePos.x, canvasY });
+    double threshold = 10.0 / canvas.getScale();
+    
+    const auto& shapes = canvas.getShapes();
+    for (int i = (int)shapes.size() - 1; i >= 0; i--) {
+        if (shapes[i]->hitTest(worldPos, threshold)) {
+            return i;
         }
     }
     return -1;

@@ -1,0 +1,117 @@
+{
+  "name": "ai-assistant-manager",
+  "displayName": "AI Assistant Manager",
+  "description": "Unified AI assistant manager for VSCode - manage all AI plugins, configurations, and environments",
+  "version": "1.0.0",
+  "publisher": "ai-assistant",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Machine Learning",
+    "Programming Languages",
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:ai-assistant-manager.showPanel",
+    "onView:aiAssistantExplorer",
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "ai-assistant-manager.showPanel",
+        "title": "AI Assistant: Open Manager Panel",
+        "icon": "$(robot)"
+      },
+      {
+        "command": "ai-assistant-manager.installPlugin",
+        "title": "AI Assistant: Install Plugin",
+        "icon": "$(add)"
+      },
+      {
+        "command": "ai-assistant-manager.switchEnvironment",
+        "title": "AI Assistant: Switch Environment",
+        "icon": "$(server-environment)"
+      },
+      {
+        "command": "ai-assistant-manager.configureModel",
+        "title": "AI Assistant: Configure AI Model",
+        "icon": "$(settings-gear)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ai-assistant",
+          "title": "AI Assistant",
+          "icon": "resources/robot-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "ai-assistant": [
+        {
+          "id": "aiAssistantExplorer",
+          "name": "AI Plugins"
+        },
+        {
+          "id": "aiEnvironments",
+          "name": "Environments"
+        },
+        {
+          "id": "aiConfiguration",
+          "name": "Configuration"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "AI Assistant Manager",
+      "properties": {
+        "ai-assistant-manager.defaultProvider": {
+          "type": "string",
+          "default": "openai",
+          "enum": ["openai", "anthropic", "google", "ollama", "custom"],
+          "description": "Default AI provider"
+        },
+        "ai-assistant-manager.apiKeys": {
+          "type": "object",
+          "default": {},
+          "description": "API keys for different providers"
+        },
+        "ai-assistant-manager.enabledPlugins": {
+          "type": "array",
+          "default": [],
+          "description": "Enabled AI plugins"
+        }
+      }
+    },
+    "keybindings": [
+      {
+        "command": "ai-assistant-manager.showPanel",
+        "key": "ctrl+shift+a",
+        "mac": "cmd+shift+a"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}

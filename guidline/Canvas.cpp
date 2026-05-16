@@ -1,4 +1,5 @@
 #include "Canvas.h"
+#include <algorithm>
 
 Canvas::Canvas()
     : windowWidth(800), windowHeight(600)
@@ -11,7 +12,11 @@ Canvas::Canvas()
     , createStep(0)
     , angleSnapped(false)
     , triangleType(TRIANGLE_EQUILATERAL)
-    , fillEnabled(false) {
+    , fillEnabled(false)
+    , editMode(EditMode::None)
+    , selectedShapeIndex(-1)
+    , mirrorShapeIndex(-1)
+    , mirrorLineIndex(-1) {
 }
 
 Canvas::~Canvas() {
@@ -140,15 +145,9 @@ void Canvas::startCreatingShape(const Point2D& worldPos) {
 }
 
 void Canvas::updateCreatingShape(const Point2D& worldPos) {
-    if (creatingShapeType == ShapeType::Line && navigationMode) {
-        createCurrentPoint = snapToAngle(createStartPoint, worldPos);
-    }
-    else if (creatingShapeType == ShapeType::Triangle) {
-        createCurrentPoint = worldPos;
+    createCurrentPoint = worldPos;
+    if (creatingShapeType == ShapeType::Triangle) {
         createStartPoint = worldPos;
-    }
-    else {
-        createCurrentPoint = worldPos;
     }
 }
 
@@ -157,9 +156,17 @@ void Canvas::finishCreatingShape() {
 
     std::shared_ptr<Shape> shape = nullptr;
 
+    Point2D endPoint = createCurrentPoint;
+    if (creatingShapeType == ShapeType::Line && navigationMode) {
+        Point2D snappedPoint = snapToAngle(createStartPoint, createCurrentPoint);
+        if (angleSnapped) {
+            endPoint = snappedPoint;
+        }
+    }
+
     switch (creatingShapeType) {
     case ShapeType::Line:
-        shape = std::make_shared<LineShape>(createStartPoint, createCurrentPoint);
+        shape = std::make_shared<LineShape>(createStartPoint, endPoint);
         break;
     case ShapeType::Circle: {
         double radius = createStartPoint.distanceTo(createCurrentPoint);
@@ -302,7 +309,7 @@ void Canvas::drawFeaturePoints(HDC hdc) {
 void Canvas::drawCreatingShape(HDC hdc) {
     if (!creatingShape || creatingShapeType == ShapeType::None) return;
 
-    HPEN hPen = CreatePen(PS_DASH, 2, RGB(100, 150, 255));
+    HPEN hPen = CreatePen(PS_SOLID, 2, RGB(100, 150, 255));
     HPEN hOldPen = (HPEN)SelectObject(hdc, hPen);
     HBRUSH hOldBrush = (HBRUSH)SelectObject(hdc, GetStockObject(NULL_BRUSH));
 
@@ -310,21 +317,42 @@ void Canvas::drawCreatingShape(HDC hdc) {
     POINT current = worldToScreen(createCurrentPoint);
 
     switch (creatingShapeType) {
-    case ShapeType::Line:
+    case ShapeType::Line: {
         MoveToEx(hdc, start.x, start.y, NULL);
         LineTo(hdc, current.x, current.y);
-        if (angleSnapped) {
-            double dx = createCurrentPoint.x - createStartPoint.x;
-            double dy = createCurrentPoint.y - createStartPoint.y;
-            double angle = atan2(dy, dx) * 180.0 / PI;
-            if (angle < 0) angle += 360;
-            SetBkMode(hdc, TRANSPARENT);
-            SetTextColor(hdc, RGB(255, 140, 0));
-            WCHAR angleText[32];
-            swprintf_s(angleText, 32, L"%.0f deg", angle);
-            TextOutW(hdc, current.x + 10, current.y - 20, angleText, (int)wcslen(angleText));
+        
+        if (navigationMode) {
+            Point2D snappedPoint = snapToAngle(createStartPoint, createCurrentPoint);
+            if (angleSnapped) {
+                HPEN hSnapPen = CreatePen(PS_DOT, 2, RGB(255, 180, 0));
+                HPEN hOldSnapPen = (HPEN)SelectObject(hdc, hSnapPen);
+                
+                POINT snappedScreen = worldToScreen(snappedPoint);
+                MoveToEx(hdc, start.x, start.y, NULL);
+                LineTo(hdc, snappedScreen.x, snappedScreen.y);
+                
+                SelectObject(hdc, hOldSnapPen);
+                DeleteObject(hSnapPen);
+                
+                double dx = snappedPoint.x - createStartPoint.x;
+                double dy = snappedPoint.y - createStartPoint.y;
+                double angle = atan2(dy, dx) * 180.0 / PI;
+                if (angle < 0) angle += 360;
+                SetBkMode(hdc, TRANSPARENT);
+                SetTextColor(hdc, RGB(255, 180, 0));
+                WCHAR angleText[32];
+                swprintf_s(angleText, 32, L"%.0f°", angle);
+                TextOutW(hdc, snappedScreen.x + 10, snappedScreen.y - 20, angleText, (int)wcslen(angleText));
+                
+                HPEN hIndicatorPen = CreatePen(PS_SOLID, 3, RGB(255, 180, 0));
+                HPEN hOldIndPen = (HPEN)SelectObject(hdc, hIndicatorPen);
+                Ellipse(hdc, snappedScreen.x - 5, snappedScreen.y - 5, snappedScreen.x + 5, snappedScreen.y + 5);
+                SelectObject(hdc, hOldIndPen);
+                DeleteObject(hIndicatorPen);
+            }
         }
         break;
+    }
     case ShapeType::Circle: {
         double radius = createStartPoint.distanceTo(createCurrentPoint);
         LONG r = (LONG)(radius * scale);
@@ -428,4 +456,439 @@ void Canvas::draw(HDC hdc) {
     swprintf_s(statusText, 128, L"Scale: %.1fx | Nav: %s | Shapes: %d",
         scale, navigationMode ? L"ON" : L"OFF", (int)shapes.size());
     TextOutW(hdc, 10, 10, statusText, (int)wcslen(statusText));
+}
+
+void Canvas::startClipMode() {
+    editMode = EditMode::SelectBoundary;
+    creatingShapeType = ShapeType::None;
+    selectedShapeIndex = -1;
+    boundaryShapeIndices.clear();
+}
+
+void Canvas::startMirrorMode() {
+    editMode = EditMode::SelectMirrorShape;
+    creatingShapeType = ShapeType::None;
+    selectedShapeIndex = -1;
+    mirrorShapeIndex = -1;
+    mirrorLineIndex = -1;
+}
+
+void Canvas::exitClipMode() {
+    for (int idx : boundaryShapeIndices) {
+        if (idx >= 0 && idx < (int)shapes.size()) {
+            shapes[idx]->selected = false;
+        }
+    }
+    boundaryShapeIndices.clear();
+    editMode = EditMode::None;
+    selectedShapeIndex = -1;
+}
+
+void Canvas::exitMirrorMode() {
+    if (mirrorShapeIndex >= 0 && mirrorShapeIndex < (int)shapes.size()) {
+        shapes[mirrorShapeIndex]->selected = false;
+    }
+    if (mirrorLineIndex >= 0 && mirrorLineIndex < (int)shapes.size()) {
+        shapes[mirrorLineIndex]->selected = false;
+    }
+    editMode = EditMode::None;
+    mirrorShapeIndex = -1;
+    mirrorLineIndex = -1;
+    selectedShapeIndex = -1;
+}
+
+void Canvas::setSelectedShapeIndex(int index) {
+    selectedShapeIndex = index;
+    if (index >= 0 && index < (int)shapes.size()) {
+        shapes[index]->selected = true;
+    }
+}
+
+bool segmentsIntersect(const Point2D& p1, const Point2D& p2, const Point2D& p3, const Point2D& p4, Point2D& outIntersection) {
+    double d1 = pointToLineSide(p3, p1, p2);
+    double d2 = pointToLineSide(p4, p1, p2);
+    double d3 = pointToLineSide(p1, p3, p4);
+    double d4 = pointToLineSide(p2, p3, p4);
+    
+    if (((d1 > 0 && d2 < 0) || (d1 < 0 && d2 > 0)) && 
+        ((d3 > 0 && d4 < 0) || (d3 < 0 && d4 > 0))) {
+        outIntersection = lineIntersection(p1, p2, p3, p4);
+        return true;
+    }
+    return false;
+}
+
+bool isPointInsideCircle(const Point2D& p, const Point2D& center, double radius) {
+    double dx = p.x - center.x;
+    double dy = p.y - center.y;
+    return (dx * dx + dy * dy) <= (radius * radius + 1e-8);
+}
+
+bool isPointInsideRectangle(const Point2D& p, const Point2D& topLeft, const Point2D& bottomRight) {
+    double minX = std::min(topLeft.x, bottomRight.x);
+    double maxX = std::max(topLeft.x, bottomRight.x);
+    double minY = std::min(topLeft.y, bottomRight.y);
+    double maxY = std::max(topLeft.y, bottomRight.y);
+    return (p.x >= minX - 1e-8 && p.x <= maxX + 1e-8 && p.y >= minY - 1e-8 && p.y <= maxY + 1e-8);
+}
+
+double cross(const Point2D& a, const Point2D& b) {
+    return a.x * b.y - a.y * b.x;
+}
+
+bool isPointInsideTriangle(const Point2D& p, const Point2D& a, const Point2D& b, const Point2D& c) {
+    Point2D v0 = c - a;
+    Point2D v1 = b - a;
+    Point2D v2 = p - a;
+    
+    double dot00 = v0.x * v0.x + v0.y * v0.y;
+    double dot01 = v0.x * v1.x + v0.y * v1.y;
+    double dot02 = v0.x * v2.x + v0.y * v2.y;
+    double dot11 = v1.x * v1.x + v1.y * v1.y;
+    double dot12 = v1.x * v2.x + v1.y * v2.y;
+    
+    double invDenom = 1.0 / (dot00 * dot11 - dot01 * dot01);
+    double u = (dot11 * dot02 - dot01 * dot12) * invDenom;
+    double v = (dot00 * dot12 - dot01 * dot02) * invDenom;
+    
+    return (u >= -1e-8) && (v >= -1e-8) && (u + v <= 1.0 + 1e-8);
+}
+
+bool isPointInDeleteRegion(const Point2D& p, const std::vector<std::shared_ptr<Shape>>& boundaries, const Point2D& clickPos) {
+    if (boundaries.empty()) return false;
+    
+    bool firstBoundaryIsLine = (boundaries[0]->getType() == ShapeType::Line);
+    
+    if (firstBoundaryIsLine) {
+        for (auto boundary : boundaries) {
+            if (boundary->getType() == ShapeType::Line) {
+                auto line = std::dynamic_pointer_cast<LineShape>(boundary);
+                double clickSide = pointToLineSide(clickPos, line->start, line->end);
+                double side = pointToLineSide(p, line->start, line->end);
+                bool onDeleteSide = (clickSide < 0 && side < 0) || (clickSide > 0 && side > 0);
+                if (!onDeleteSide) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    else {
+        for (auto boundary : boundaries) {
+            if (boundary->getType() == ShapeType::Circle) {
+                auto circle = std::dynamic_pointer_cast<CircleShape>(boundary);
+                bool clickInside = isPointInsideCircle(clickPos, circle->center, circle->radius);
+                bool pointInside = isPointInsideCircle(p, circle->center, circle->radius);
+                if (clickInside != pointInside) {
+                    return false;
+                }
+            }
+            else if (boundary->getType() == ShapeType::Rectangle) {
+                auto rect = std::dynamic_pointer_cast<RectangleShape>(boundary);
+                bool clickInside = isPointInsideRectangle(clickPos, rect->topLeft, rect->bottomRight);
+                bool pointInside = isPointInsideRectangle(p, rect->topLeft, rect->bottomRight);
+                if (clickInside != pointInside) {
+                    return false;
+                }
+            }
+            else if (boundary->getType() == ShapeType::Triangle) {
+                auto tri = std::dynamic_pointer_cast<TriangleShape>(boundary);
+                bool clickInside = isPointInsideTriangle(clickPos, tri->p1, tri->p2, tri->p3);
+                bool pointInside = isPointInsideTriangle(p, tri->p1, tri->p2, tri->p3);
+                if (clickInside != pointInside) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+}
+
+void findIntersectionsWithBoundary(const Point2D& lineStart, const Point2D& lineEnd, 
+                                   std::shared_ptr<Shape> boundary, 
+                                   std::vector<Point2D>& intersections) {
+    if (boundary->getType() == ShapeType::Line) {
+        auto boundaryLine = std::dynamic_pointer_cast<LineShape>(boundary);
+        Point2D intersection;
+        if (segmentsIntersect(lineStart, lineEnd, boundaryLine->start, boundaryLine->end, intersection)) {
+            intersections.push_back(intersection);
+        }
+    }
+    else if (boundary->getType() == ShapeType::Circle) {
+        auto circle = std::dynamic_pointer_cast<CircleShape>(boundary);
+        Point2D dir = lineEnd - lineStart;
+        Point2D f = lineStart - circle->center;
+        
+        double a = dir.x * dir.x + dir.y * dir.y;
+        double b = 2 * (f.x * dir.x + f.y * dir.y);
+        double c = (f.x * f.x + f.y * f.y) - circle->radius * circle->radius;
+        
+        double discriminant = b * b - 4 * a * c;
+        if (discriminant >= 0) {
+            discriminant = sqrt(discriminant);
+            double t1 = (-b - discriminant) / (2 * a);
+            double t2 = (-b + discriminant) / (2 * a);
+            
+            if (t1 >= 0 && t1 <= 1) {
+                intersections.push_back(Point2D(lineStart.x + t1 * dir.x, lineStart.y + t1 * dir.y));
+            }
+            if (t2 >= 0 && t2 <= 1 && fabs(t2 - t1) > 1e-6) {
+                intersections.push_back(Point2D(lineStart.x + t2 * dir.x, lineStart.y + t2 * dir.y));
+            }
+        }
+    }
+    else if (boundary->getType() == ShapeType::Rectangle) {
+        auto rect = std::dynamic_pointer_cast<RectangleShape>(boundary);
+        Point2D corners[4] = {
+            rect->topLeft,
+            Point2D(rect->bottomRight.x, rect->topLeft.y),
+            rect->bottomRight,
+            Point2D(rect->topLeft.x, rect->bottomRight.y)
+        };
+        
+        for (int i = 0; i < 4; i++) {
+            Point2D intersection;
+            if (segmentsIntersect(lineStart, lineEnd, corners[i], corners[(i+1)%4], intersection)) {
+                intersections.push_back(intersection);
+            }
+        }
+    }
+    else if (boundary->getType() == ShapeType::Triangle) {
+        auto tri = std::dynamic_pointer_cast<TriangleShape>(boundary);
+        Point2D corners[3] = { tri->p1, tri->p2, tri->p3 };
+        
+        for (int i = 0; i < 3; i++) {
+            Point2D intersection;
+            if (segmentsIntersect(lineStart, lineEnd, corners[i], corners[(i+1)%3], intersection)) {
+                intersections.push_back(intersection);
+            }
+        }
+    }
+}
+
+void Canvas::performClip(int shapeIndex, const Point2D& clickPos) {
+    if (boundaryShapeIndices.empty()) return;
+    if (shapeIndex < 0 || shapeIndex >= (int)shapes.size()) return;
+    
+    for (int boundaryIdx : boundaryShapeIndices) {
+        if (boundaryIdx == shapeIndex) return;
+    }
+
+    std::vector<std::shared_ptr<Shape>> boundaries;
+    for (int idx : boundaryShapeIndices) {
+        if (idx >= 0 && idx < (int)shapes.size()) {
+            boundaries.push_back(shapes[idx]);
+        }
+    }
+    
+    if (boundaries.empty()) return;
+
+    auto shape = shapes[shapeIndex];
+    
+    if (shape->getType() == ShapeType::Line) {
+        auto line = std::dynamic_pointer_cast<LineShape>(shape);
+        
+        std::vector<Point2D> allPoints;
+        allPoints.push_back(line->start);
+        allPoints.push_back(line->end);
+        
+        for (auto boundary : boundaries) {
+            findIntersectionsWithBoundary(line->start, line->end, boundary, allPoints);
+        }
+        
+        std::sort(allPoints.begin(), allPoints.end(), [&](const Point2D& a, const Point2D& b) {
+            double distA = (a.x - line->start.x) * (a.x - line->start.x) + (a.y - line->start.y) * (a.y - line->start.y);
+            double distB = (b.x - line->start.x) * (b.x - line->start.x) + (b.y - line->start.y) * (b.y - line->start.y);
+            return distA < distB;
+        });
+        
+        if (allPoints.size() <= 2) {
+            bool startInDelete = isPointInDeleteRegion(line->start, boundaries, clickPos);
+            bool endInDelete = isPointInDeleteRegion(line->end, boundaries, clickPos);
+            
+            if (startInDelete && endInDelete) {
+                shapes.erase(shapes.begin() + shapeIndex);
+                return;
+            }
+            else if (startInDelete || endInDelete) {
+                for (auto boundary : boundaries) {
+                    std::vector<Point2D> intersections;
+                    findIntersectionsWithBoundary(line->start, line->end, boundary, intersections);
+                    if (!intersections.empty()) {
+                        if (startInDelete) {
+                            line->start = intersections[0];
+                        } else {
+                            line->end = intersections[0];
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            std::vector<std::pair<Point2D, Point2D>> keepSegments;
+            
+            for (size_t i = 0; i < allPoints.size() - 1; i++) {
+                Point2D midPt((allPoints[i].x + allPoints[i+1].x) / 2, (allPoints[i].y + allPoints[i+1].y) / 2);
+                if (!isPointInDeleteRegion(midPt, boundaries, clickPos)) {
+                    keepSegments.push_back({allPoints[i], allPoints[i+1]});
+                }
+            }
+            
+            if (keepSegments.empty()) {
+                shapes.erase(shapes.begin() + shapeIndex);
+                return;
+            }
+            else {
+                line->start = keepSegments[0].first;
+                line->end = keepSegments[0].second;
+                
+                for (size_t i = 1; i < keepSegments.size(); i++) {
+                    auto newLine = std::make_shared<LineShape>(keepSegments[i].first, keepSegments[i].second);
+                    shapes.push_back(newLine);
+                }
+            }
+        }
+    }
+    else if (shape->getType() == ShapeType::Circle) {
+        auto circle = std::dynamic_pointer_cast<CircleShape>(shape);
+        
+        bool centerInDelete = isPointInDeleteRegion(circle->center, boundaries, clickPos);
+        
+        if (centerInDelete) {
+            shapes.erase(shapes.begin() + shapeIndex);
+            return;
+        }
+        
+        double minRadius = circle->radius;
+        for (auto boundary : boundaries) {
+            if (boundary->getType() == ShapeType::Line) {
+                auto boundaryLine = std::dynamic_pointer_cast<LineShape>(boundary);
+                double dist = fabs(pointToLineSide(circle->center, boundaryLine->start, boundaryLine->end));
+                double clickSide = pointToLineSide(clickPos, boundaryLine->start, boundaryLine->end);
+                double side = pointToLineSide(circle->center, boundaryLine->start, boundaryLine->end);
+                bool centerOnKeepSide = !((clickSide < 0 && side < 0) || (clickSide > 0 && side > 0));
+                
+                if (centerOnKeepSide && dist < circle->radius) {
+                    minRadius = std::min(minRadius, dist);
+                }
+            }
+        }
+        
+        if (minRadius < circle->radius - 1e-6) {
+            circle->radius = minRadius;
+        }
+    }
+    else if (shape->getType() == ShapeType::Rectangle) {
+        auto rect = std::dynamic_pointer_cast<RectangleShape>(shape);
+        Point2D corners[4] = {
+            rect->topLeft,
+            Point2D(rect->bottomRight.x, rect->topLeft.y),
+            rect->bottomRight,
+            Point2D(rect->topLeft.x, rect->bottomRight.y)
+        };
+        
+        std::vector<Point2D> keepPoints;
+        std::vector<Point2D> intersectionPoints;
+        
+        for (int i = 0; i < 4; i++) {
+            if (!isPointInDeleteRegion(corners[i], boundaries, clickPos)) {
+                keepPoints.push_back(corners[i]);
+            }
+        }
+        
+        for (auto boundary : boundaries) {
+            for (int i = 0; i < 4; i++) {
+                Point2D intersection;
+                std::vector<Point2D> inters;
+                findIntersectionsWithBoundary(corners[i], corners[(i+1)%4], boundary, inters);
+                for (auto& pt : inters) {
+                    intersectionPoints.push_back(pt);
+                }
+            }
+        }
+        
+        for (auto& pt : intersectionPoints) {
+            if (!isPointInDeleteRegion(pt, boundaries, clickPos)) {
+                keepPoints.push_back(pt);
+            }
+        }
+        
+        if (keepPoints.size() == 0) {
+            shapes.erase(shapes.begin() + shapeIndex);
+            return;
+        }
+        else if (keepPoints.size() >= 2) {
+            double minX = keepPoints[0].x, maxX = keepPoints[0].x;
+            double minY = keepPoints[0].y, maxY = keepPoints[0].y;
+            for (auto& p : keepPoints) {
+                minX = std::min(minX, p.x);
+                maxX = std::max(maxX, p.x);
+                minY = std::min(minY, p.y);
+                maxY = std::max(maxY, p.y);
+            }
+            rect->topLeft = Point2D(minX, minY);
+            rect->bottomRight = Point2D(maxX, maxY);
+        }
+    }
+    else if (shape->getType() == ShapeType::Triangle) {
+        auto tri = std::dynamic_pointer_cast<TriangleShape>(shape);
+        Point2D corners[3] = { tri->p1, tri->p2, tri->p3 };
+        
+        std::vector<Point2D> keepPoints;
+        for (int i = 0; i < 3; i++) {
+            if (!isPointInDeleteRegion(corners[i], boundaries, clickPos)) {
+                keepPoints.push_back(corners[i]);
+            }
+        }
+        
+        if (keepPoints.size() == 0) {
+            shapes.erase(shapes.begin() + shapeIndex);
+            return;
+        }
+        else if (keepPoints.size() >= 2) {
+            tri->p1 = keepPoints[0];
+            tri->p2 = keepPoints[1];
+            if (keepPoints.size() >= 3) {
+                tri->p3 = keepPoints[2];
+            }
+        }
+    }
+}
+
+void Canvas::performMirror() {
+    if (mirrorShapeIndex < 0 || mirrorShapeIndex >= (int)shapes.size()) return;
+    if (mirrorLineIndex < 0 || mirrorLineIndex >= (int)shapes.size()) return;
+    
+    auto mirrorLine = std::dynamic_pointer_cast<LineShape>(shapes[mirrorLineIndex]);
+    if (!mirrorLine) return;
+
+    auto mirroredShape = shapes[mirrorShapeIndex]->mirror(mirrorLine->start, mirrorLine->end);
+    if (mirroredShape) {
+        shapes.push_back(mirroredShape);
+    }
+    exitMirrorMode();
+}
+
+std::wstring Canvas::getStatusText() const {
+    switch (editMode) {
+    case EditMode::SelectBoundary:
+        return L"Clip Mode: Click to select boundary lines (multi-select), right-click to confirm";
+    case EditMode::SelectShapeToClip:
+        return L"Clip Mode: Click shapes to clip, right-click to finish";
+    case EditMode::SelectMirrorShape:
+        return L"Mirror Mode: Select shape to mirror";
+    case EditMode::SelectMirrorLine:
+        return L"Mirror Mode: Select line as mirror axis";
+    default:
+        if (creatingShapeType == ShapeType::Line)
+            return L"Drawing Line: Click to set start point, click again to set end (hold Shift to pan)";
+        else if (creatingShapeType == ShapeType::Circle)
+            return L"Drawing Circle: Click to set center, drag to set radius";
+        else if (creatingShapeType == ShapeType::Rectangle)
+            return L"Drawing Rectangle: Click to set corner, drag to set opposite";
+        else if (creatingShapeType == ShapeType::Triangle)
+            return L"Drawing Triangle: Click to set center position";
+        else
+            return L"Ready - Select tool from toolbar, scroll to zoom, Shift+drag to pan";
+    }
 }

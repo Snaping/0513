@@ -1,9 +1,12 @@
 #pragma once
+#ifndef NOMINMAX
 #define NOMINMAX
+#endif
 #include <windows.h>
 #include <vector>
 #include <cmath>
 #include <string>
+#include <memory>
 
 const double PI = 3.14159265358979323846;
 
@@ -48,6 +51,10 @@ struct FeaturePoint {
         : position(pos), type(t), ownerShape(owner), shapeIndex(idx), description(desc) {}
 };
 
+Point2D mirrorPoint(const Point2D& p, const Point2D& lineStart, const Point2D& lineEnd);
+double pointToLineSide(const Point2D& p, const Point2D& lineStart, const Point2D& lineEnd);
+Point2D lineIntersection(const Point2D& p1, const Point2D& p2, const Point2D& p3, const Point2D& p4);
+
 class Shape {
 public:
     Shape() : selected(false), filled(false) {}
@@ -56,6 +63,8 @@ public:
     virtual std::vector<FeaturePoint> getFeaturePoints() const = 0;
     virtual bool hitTest(const Point2D& worldPos, double threshold) const = 0;
     virtual ShapeType getType() const = 0;
+    virtual std::shared_ptr<Shape> mirror(const Point2D& lineStart, const Point2D& lineEnd) const = 0;
+    virtual bool shouldClip(const Point2D& lineStart, const Point2D& lineEnd, bool keepPositiveSide) const = 0;
 
     bool selected;
     bool filled;
@@ -70,6 +79,8 @@ public:
     std::vector<FeaturePoint> getFeaturePoints() const override;
     bool hitTest(const Point2D& worldPos, double threshold) const override;
     ShapeType getType() const override { return ShapeType::Line; }
+    std::shared_ptr<Shape> mirror(const Point2D& lineStart, const Point2D& lineEnd) const override;
+    bool shouldClip(const Point2D& lineStart, const Point2D& lineEnd, bool keepPositiveSide) const override;
 };
 
 class CircleShape : public Shape {
@@ -82,6 +93,8 @@ public:
     std::vector<FeaturePoint> getFeaturePoints() const override;
     bool hitTest(const Point2D& worldPos, double threshold) const override;
     ShapeType getType() const override { return ShapeType::Circle; }
+    std::shared_ptr<Shape> mirror(const Point2D& lineStart, const Point2D& lineEnd) const override;
+    bool shouldClip(const Point2D& lineStart, const Point2D& lineEnd, bool keepPositiveSide) const override;
 };
 
 class RectangleShape : public Shape {
@@ -93,6 +106,8 @@ public:
     std::vector<FeaturePoint> getFeaturePoints() const override;
     bool hitTest(const Point2D& worldPos, double threshold) const override;
     ShapeType getType() const override { return ShapeType::Rectangle; }
+    std::shared_ptr<Shape> mirror(const Point2D& lineStart, const Point2D& lineEnd) const override;
+    bool shouldClip(const Point2D& lineStart, const Point2D& lineEnd, bool keepPositiveSide) const override;
 };
 
 class TriangleShape : public Shape {
@@ -104,4 +119,6 @@ public:
     std::vector<FeaturePoint> getFeaturePoints() const override;
     bool hitTest(const Point2D& worldPos, double threshold) const override;
     ShapeType getType() const override { return ShapeType::Triangle; }
+    std::shared_ptr<Shape> mirror(const Point2D& lineStart, const Point2D& lineEnd) const override;
+    bool shouldClip(const Point2D& lineStart, const Point2D& lineEnd, bool keepPositiveSide) const override;
 };

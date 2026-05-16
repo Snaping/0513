@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Editor Pro</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #1e1e1e;
+      color: #cccccc;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .title-bar {
+      height: 30px;
+      background: #323233;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      font-size: 12px;
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    .main-content {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .activity-bar {
+      width: 48px;
+      background: #333333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 8px;
+      border-right: 1px solid #1e1e1e;
+    }
+
+    .activity-item {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #858585;
+      font-size: 24px;
+      transition: all 0.2s;
+    }
+
+    .activity-item:hover,
+    .activity-item.active {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .activity-item.active {
+      border-left: 2px solid #007acc;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: #252526;
+      border-right: 1px solid #1e1e1e;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .sidebar.active {
+      display: flex;
+    }
+
+    .sidebar-header {
+      padding: 10px 15px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #bbbbbb;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    .sidebar-content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 5px 0;
+    }
+
+    .file-item {
+      padding: 6px 15px 6px 30px;
+      cursor: pointer;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .file-item:hover {
+      background: #2a2d2e;
+    }
+
+    .file-item.active {
+      background: #094771;
+    }
+
+    .file-icon {
+      font-size: 16px;
+    }
+
+    .editor-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .tabs-bar {
+      height: 35px;
+      background: #252526;
+      display: flex;
+      align-items: flex-end;
+      border-bottom: 1px solid #1e1e1e;
+      overflow-x: auto;
+    }
+
+    .tab {
+      height: 35px;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      cursor: pointer;
+      background: #2d2d2d;
+      border-right: 1px solid #1e1e1e;
+      min-width: 120px;
+      max-width: 200px;
+    }
+
+    .tab.active {
+      background: #1e1e1e;
+      border-top: 1px solid #007acc;
+    }
+
+    .tab-close {
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .tab:hover .tab-close {
+      opacity: 1;
+    }
+
+    .tab-close:hover {
+      background: #4a4a4a;
+    }
+
+    #monaco-editor {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .status-bar {
+      height: 22px;
+      background: #007acc;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      font-size: 12px;
+      color: white;
+    }
+
+    .status-item {
+      padding: 0 10px;
+    }
+
+    .ai-panel {
+      width: 350px;
+      background: #252526;
+      border-left: 1px solid #1e1e1e;
+      display: none;
+      flex-direction: column;
+    }
+
+    .ai-panel.active {
+      display: flex;
+    }
+
+    .ai-panel-header {
+      padding: 15px;
+      border-bottom: 1px solid #1e1e1e;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ai-panel-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .ai-panel-close {
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 3px;
+    }
+
+    .ai-panel-close:hover {
+      background: #4a4a4a;
+    }
+
+    .ai-provider-select {
+      padding: 10px 15px;
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    .ai-provider-select select {
+      width: 100%;
+      padding: 8px 12px;
+      background: #3c3c3c;
+      border: 1px solid #1e1e1e;
+      color: #cccccc;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+
+    .ai-config {
+      padding: 10px 15px;
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    .config-input {
+      width: 100%;
+      padding: 8px 12px;
+      background: #3c3c3c;
+      border: 1px solid #1e1e1e;
+      color: #cccccc;
+      border-radius: 4px;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .config-label {
+      font-size: 11px;
+      color: #858585;
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    .ai-chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 15px;
+    }
+
+    .message {
+      margin-bottom: 15px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .message.user {
+      background: #094771;
+      margin-left: 20px;
+    }
+
+    .message.ai {
+      background: #3c3c3c;
+      margin-right: 20px;
+    }
+
+    .ai-chat-input {
+      padding: 15px;
+      border-top: 1px solid #1e1e1e;
+    }
+
+    .ai-input-wrapper {
+      display: flex;
+      gap: 8px;
+    }
+
+    .ai-input {
+      flex: 1;
+      padding: 10px 12px;
+      background: #3c3c3c;
+      border: 1px solid #1e1e1e;
+      color: #cccccc;
+      border-radius: 4px;
+      font-size: 13px;
+      resize: none;
+      font-family: inherit;
+    }
+
+    .ai-send-btn {
+      padding: 0 15px;
+      background: #007acc;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .ai-send-btn:hover {
+      background: #005a9e;
+    }
+
+    .search-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      padding-top: 100px;
+      z-index: 1000;
+    }
+
+    .search-modal.active {
+      display: flex;
+    }
+
+    .search-box {
+      width: 600px;
+      background: #252526;
+      border-radius: 6px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+
+    .search-input-wrapper {
+      padding: 10px;
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 15px;
+      background: #3c3c3c;
+      border: 1px solid #454545;
+      color: #ffffff;
+      border-radius: 4px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .search-input:focus {
+      border-color: #007acc;
+    }
+
+    .search-results {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .search-result-item {
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #1e1e1e;
+    }
+
+    .search-result-item:hover {
+      background: #2a2d2e;
+    }
+
+    .search-result-item.active {
+      background: #094771;
+    }
+
+    .search-result-icon {
+      font-size: 16px;
+      color: #858585;
+    }
+
+    .search-result-path {
+      color: #858585;
+      font-size: 11px;
+      margin-left: auto;
+    }
+
+    .plugin-item {
+      padding: 12px 15px;
+      border-bottom: 1px solid #1e1e1e;
+      cursor: pointer;
+    }
+
+    .plugin-item:hover {
+      background: #2a2d2e;
+    }
+
+    .plugin-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .plugin-desc {
+      font-size: 11px;
+      color: #858585;
+    }
+
+    .plugin-status {
+      font-size: 10px;
+      color: #369432;
+      margin-top: 4px;
+    }
+
+    .welcome-screen {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .welcome-icon {
+      font-size: 80px;
+      margin-bottom: 20px;
+      opacity: 0.3;
+    }
+
+    .welcome-title {
+      font-size: 24px;
+      font-weight: 300;
+      color: #e8e8e8;
+      margin-bottom: 10px;
+    }
+
+    .welcome-subtitle {
+      font-size: 14px;
+      color: #858585;
+      margin-bottom: 30px;
+    }
+
+    .welcome-shortcuts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      max-width: 500px;
+    }
+
+    .shortcut-item {
+      background: #252526;
+      padding: 12px 20px;
+      border-radius: 6px;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .shortcut-item:hover {
+      background: #2a2d2e;
+    }
+
+    .shortcut-key {
+      font-size: 11px;
+      color: #007acc;
+      margin-bottom: 4px;
+      font-family: monospace;
+    }
+
+    .shortcut-label {
+      font-size: 13px;
+      color: #cccccc;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1e1e1e;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #424242;
+      border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4f4f4f;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div class="main-content">
+      <div class="activity-bar">
+        <div class="activity-item active" data-panel="explorer" title="资源管理器">📁</div>
+        <div class="activity-item" data-panel="search" title="搜索">🔍</div>
+        <div class="activity-item" data-panel="plugins" title="插件">🔌</div>
+        <div class="activity-item" data-action="ai" title="AI 助手">🤖</div>
+      </div>
+
+      <div class="sidebar active" id="explorer-panel">
+        <div class="sidebar-header">资源管理器</div>
+        <div class="sidebar-content" id="file-list"></div>
+      </div>
+
+      <div class="sidebar" id="plugins-panel">
+        <div class="sidebar-header">AI 插件</div>
+        <div class="sidebar-content" id="plugins-list"></div>
+      </div>
+
+      <div class="editor-container">
+        <div class="tabs-bar" id="tabs-bar"></div>
+        <div id="monaco-editor"></div>
+        <div class="welcome-screen" id="welcome-screen">
+          <div class="welcome-icon">💻</div>
+          <h1 class="welcome-title">AI Editor Pro</h1>
+          <p class="welcome-subtitle">智能代码编辑器，内置 AI 助手</p>
+          <div class="welcome-shortcuts">
+            <div class="shortcut-item" onclick="openFile()">
+              <div class="shortcut-key">Ctrl + O</div>
+              <div class="shortcut-label">打开文件</div>
+            </div>
+            <div class="shortcut-item" onclick="openFolder()">
+              <div class="shortcut-key">Ctrl + K Ctrl + O</div>
+              <div class="shortcut-label">打开文件夹</div>
+            </div>
+            <div class="shortcut-item" onclick="showSearchModal()">
+              <div class="shortcut-key">Ctrl + P</div>
+              <div class="shortcut-label">快速打开文件</div>
+            </div>
+            <div class="shortcut-item" onclick="toggleAIPanel()">
+              <div class="shortcut-key">Ctrl + Shift + A</div>
+              <div class="shortcut-label">打开 AI 助手</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ai-panel" id="ai-panel">
+        <div class="ai-panel-header">
+          <span class="ai-panel-title">AI 助手</span>
+          <span class="ai-panel-close" onclick="toggleAIPanel()">✕</span>
+        </div>
+        <div class="ai-provider-select">
+          <select id="ai-provider">
+            <option value="openai">OpenAI (GPT-4)</option>
+            <option value="anthropic">Anthropic (Claude)</option>
+            <option value="google">Google (Gemini)</option>
+            <option value="ollama">Ollama (本地)</option>
+          </select>
+        </div>
+        <div class="ai-config">
+          <label class="config-label">API Key</label>
+          <input type="password" class="config-input" id="api-key" placeholder="输入 API Key">
+          <label class="config-label">模型</label>
+          <input type="text" class="config-input" id="ai-model" value="gpt-4" placeholder="模型名称">
+        </div>
+        <div class="ai-chat-messages" id="chat-messages">
+          <div class="message ai">
+            👋 你好！我是 AI 编程助手。我可以帮你：<br><br>
+            • 解释代码逻辑<br>
+            • 生成代码片段<br>
+            • 修复 Bug<br>
+            • 代码重构建议<br><br>
+            有什么我可以帮你的吗？
+          </div>
+        </div>
+        <div class="ai-chat-input">
+          <div class="ai-input-wrapper">
+            <textarea class="ai-input" id="ai-input" rows="3" placeholder="输入你的问题..."></textarea>
+            <button class="ai-send-btn" onclick="sendAIMessage()">发送</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="status-bar">
+      <span class="status-item">UTF-8</span>
+      <span class="status-item">JavaScript</span>
+      <span class="status-item">Ln 1, Col 1</span>
+    </div>
+  </div>
+
+  <div class="search-modal" id="search-modal">
+    <div class="search-box">
+      <div class="search-input-wrapper">
+        <input type="text" class="search-input" id="search-input" placeholder="搜索文件...">
+      </div>
+      <div class="search-results" id="search-results"></div>
+    </div>
+  </div>
+
+  <script>
+    require.config({ paths: { 'vs': '../node_modules/monaco-editor/min/vs' }});
+  </script>
+  <script src="../node_modules/monaco-editor/min/vs/loader.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>

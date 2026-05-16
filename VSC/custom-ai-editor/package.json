@@ -1,0 +1,63 @@
+{
+  "name": "ai-editor-pro",
+  "version": "1.0.0",
+  "description": "AI-Powered Code Editor based on Electron and Monaco",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder",
+    "build:win": "electron-builder --win",
+    "build:portable": "electron-builder --win portable"
+  },
+  "keywords": [
+    "editor",
+    "ai",
+    "monaco",
+    "electron"
+  ],
+  "author": "AI Editor Team",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "dependencies": {
+    "monaco-editor": "^0.48.0",
+    "axios": "^1.6.8",
+    "fuse.js": "^7.0.0"
+  },
+  "build": {
+    "appId": "com.ai.editor.pro",
+    "productName": "AI Editor Pro",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64"]
+        },
+        {
+          "target": "portable",
+          "arch": ["x64"]
+        }
+      ],
+      "icon": "assets/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "files": [
+      "src/**/*",
+      "node_modules/monaco-editor/**/*",
+      "node_modules/axios/**/*",
+      "node_modules/fuse.js/**/*",
+      "assets/**/*"
+    ]
+  }
+}

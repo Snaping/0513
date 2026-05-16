@@ -18,3 +18,6 @@
 
 #define IDM_EDIT_CLEAR          4001
 #define IDM_STYLE_FILL          6001
+
+#define IDM_EDIT_CLIP           5001
+#define IDM_EDIT_MIRROR         5002

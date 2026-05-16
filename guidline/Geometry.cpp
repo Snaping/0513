@@ -1,5 +1,25 @@
 #include "Geometry.h"
 
+Point2D mirrorPoint(const Point2D& p, const Point2D& lineStart, const Point2D& lineEnd) {
+    double dx = lineEnd.x - lineStart.x;
+    double dy = lineEnd.y - lineStart.y;
+    double t = ((p.x - lineStart.x) * dx + (p.y - lineStart.y) * dy) / (dx * dx + dy * dy);
+    Point2D projection(lineStart.x + t * dx, lineStart.y + t * dy);
+    return Point2D(2 * projection.x - p.x, 2 * projection.y - p.y);
+}
+
+double pointToLineSide(const Point2D& p, const Point2D& lineStart, const Point2D& lineEnd) {
+    return (lineEnd.x - lineStart.x) * (p.y - lineStart.y) - (lineEnd.y - lineStart.y) * (p.x - lineStart.x);
+}
+
+Point2D lineIntersection(const Point2D& p1, const Point2D& p2, const Point2D& p3, const Point2D& p4) {
+    double den = (p1.x - p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x - p4.x);
+    if (fabs(den) < 1e-10) return Point2D(0, 0);
+    
+    double t = ((p1.x - p3.x) * (p3.y - p4.y) - (p1.y - p3.y) * (p3.x - p4.x)) / den;
+    return Point2D(p1.x + t * (p2.x - p1.x), p1.y + t * (p2.y - p1.y));
+}
+
 void LineShape::draw(HDC hdc, const Point2D& offset, double scale) const {
     POINT s, e;
     s.x = (LONG)((start.x + offset.x) * scale);
@@ -56,6 +76,25 @@ bool LineShape::hitTest(const Point2D& worldPos, double threshold) const {
     return sqrt(dx * dx + dy * dy) < threshold;
 }
 
+std::shared_ptr<Shape> LineShape::mirror(const Point2D& lineStart, const Point2D& lineEnd) const {
+    Point2D newStart = mirrorPoint(start, lineStart, lineEnd);
+    Point2D newEnd = mirrorPoint(end, lineStart, lineEnd);
+    auto line = std::make_shared<LineShape>(newStart, newEnd);
+    line->filled = filled;
+    return line;
+}
+
+bool LineShape::shouldClip(const Point2D& lineStart, const Point2D& lineEnd, bool keepPositiveSide) const {
+    double side1 = pointToLineSide(start, lineStart, lineEnd);
+    double side2 = pointToLineSide(end, lineStart, lineEnd);
+    if (keepPositiveSide) {
+        return side1 < 0 && side2 < 0;
+    }
+    else {
+        return side1 > 0 && side2 > 0;
+    }
+}
+
 void CircleShape::draw(HDC hdc, const Point2D& offset, double scale) const {
     POINT c;
     c.x = (LONG)((center.x + offset.x) * scale);
@@ -98,6 +137,23 @@ std::vector<FeaturePoint> CircleShape::getFeaturePoints() const {
 bool CircleShape::hitTest(const Point2D& worldPos, double threshold) const {
     double dist = worldPos.distanceTo(center);
     return fabs(dist - radius) < threshold;
+}
+
+std::shared_ptr<Shape> CircleShape::mirror(const Point2D& lineStart, const Point2D& lineEnd) const {
+    Point2D newCenter = mirrorPoint(center, lineStart, lineEnd);
+    auto circle = std::make_shared<CircleShape>(newCenter, radius);
+    circle->filled = filled;
+    return circle;
+}
+
+bool CircleShape::shouldClip(const Point2D& lineStart, const Point2D& lineEnd, bool keepPositiveSide) const {
+    double side = pointToLineSide(center, lineStart, lineEnd);
+    if (keepPositiveSide) {
+        return side < 0;
+    }
+    else {
+        return side > 0;
+    }
 }
 
 void RectangleShape::draw(HDC hdc, const Point2D& offset, double scale) const {
@@ -176,6 +232,25 @@ bool RectangleShape::hitTest(const Point2D& worldPos, double threshold) const {
     return onVerticalEdge || onHorizontalEdge;
 }
 
+std::shared_ptr<Shape> RectangleShape::mirror(const Point2D& lineStart, const Point2D& lineEnd) const {
+    Point2D newTopLeft = mirrorPoint(topLeft, lineStart, lineEnd);
+    Point2D newBottomRight = mirrorPoint(bottomRight, lineStart, lineEnd);
+    auto rect = std::make_shared<RectangleShape>(newTopLeft, newBottomRight);
+    rect->filled = filled;
+    return rect;
+}
+
+bool RectangleShape::shouldClip(const Point2D& lineStart, const Point2D& lineEnd, bool keepPositiveSide) const {
+    Point2D center((topLeft.x + bottomRight.x) / 2, (topLeft.y + bottomRight.y) / 2);
+    double side = pointToLineSide(center, lineStart, lineEnd);
+    if (keepPositiveSide) {
+        return side < 0;
+    }
+    else {
+        return side > 0;
+    }
+}
+
 void TriangleShape::draw(HDC hdc, const Point2D& offset, double scale) const {
     POINT a, b, c;
     a.x = (LONG)((p1.x + offset.x) * scale);
@@ -227,4 +302,24 @@ std::vector<FeaturePoint> TriangleShape::getFeaturePoints() const {
 bool TriangleShape::hitTest(const Point2D& worldPos, double threshold) const {
     LineShape l1(p1, p2), l2(p2, p3), l3(p3, p1);
     return l1.hitTest(worldPos, threshold) || l2.hitTest(worldPos, threshold) || l3.hitTest(worldPos, threshold);
+}
+
+std::shared_ptr<Shape> TriangleShape::mirror(const Point2D& lineStart, const Point2D& lineEnd) const {
+    Point2D newP1 = mirrorPoint(p1, lineStart, lineEnd);
+    Point2D newP2 = mirrorPoint(p2, lineStart, lineEnd);
+    Point2D newP3 = mirrorPoint(p3, lineStart, lineEnd);
+    auto triangle = std::make_shared<TriangleShape>(newP1, newP2, newP3);
+    triangle->filled = filled;
+    return triangle;
+}
+
+bool TriangleShape::shouldClip(const Point2D& lineStart, const Point2D& lineEnd, bool keepPositiveSide) const {
+    Point2D center((p1.x + p2.x + p3.x) / 3, (p1.y + p2.y + p3.y) / 3);
+    double side = pointToLineSide(center, lineStart, lineEnd);
+    if (keepPositiveSide) {
+        return side < 0;
+    }
+    else {
+        return side > 0;
+    }
 }

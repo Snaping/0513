@@ -9,6 +9,15 @@ enum TriangleType {
     TRIANGLE_RIGHT
 };
 
+enum class EditMode {
+    None,
+    CreateShape,
+    SelectBoundary,
+    SelectShapeToClip,
+    SelectMirrorShape,
+    SelectMirrorLine
+};
+
 class Canvas {
 public:
     Canvas();
@@ -55,6 +64,22 @@ public:
     void setFillEnabled(bool enabled) { fillEnabled = enabled; }
     bool isFillEnabled() const { return fillEnabled; }
 
+    void startClipMode();
+    void startMirrorMode();
+    void exitClipMode();
+    void exitMirrorMode();
+    void setSelectedShapeIndex(int index);
+    int getSelectedShapeIndex() const { return selectedShapeIndex; }
+    void performClip(int shapeIndex, const Point2D& clickPos);
+    void performMirror();
+    EditMode getEditMode() const { return editMode; }
+    void setEditMode(EditMode mode) { editMode = mode; }
+    std::wstring getStatusText() const;
+
+    std::vector<int> boundaryShapeIndices;
+    int mirrorShapeIndex;
+    int mirrorLineIndex;
+
 private:
     void drawCoordinateSystem(HDC hdc);
     void drawFeaturePoints(HDC hdc);
@@ -80,4 +105,7 @@ private:
     int createStep;
     bool angleSnapped;
     TriangleType triangleType;
+
+    EditMode editMode;
+    int selectedShapeIndex;
 };
